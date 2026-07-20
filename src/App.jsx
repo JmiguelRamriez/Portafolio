@@ -4,6 +4,7 @@ import Hero from './components/hero'
 import Projects from './components/projects'
 import Skills from './components/skills'
 import Contact from './components/contact'
+import Footer from './components/footer'
 import GradientBg from './components/GradientBg'
 import './components/Cursor.css'
 import './components/MoonStars.css'
@@ -21,6 +22,7 @@ function App() {
         <Projects />
         <Skills />
         <Contact />
+        <Footer />
       </div>
     </div>
   )

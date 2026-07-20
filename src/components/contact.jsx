@@ -44,7 +44,7 @@ function Contact() {
                 </div>
                 <div>
                   <p className="contact-info-label">Location</p>
-                  <span className="contact-info-value">Monterrey, Mexico</span>
+                  <span className="contact-info-value">Querétaro, Mexico</span>
                 </div>
               </div>
             </div>
@@ -73,7 +73,7 @@ function Contact() {
           <div className="contact-form-card">
             <form
               className="contact-form"
-              action="https://formspree.io/f/your-form-id"
+              action="https://formspree.io/f/xgogyjzn"
               method="POST"
             >
               <div className="form-row">
