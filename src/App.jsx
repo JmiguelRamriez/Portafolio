@@ -2,6 +2,7 @@ import Cursor from './components/Cursor'
 import Navbar from './components/navbar'
 import Hero from './components/hero'
 import Projects from './components/projects'
+import Skills from './components/skills'
 import Contact from './components/contact'
 import GradientBg from './components/GradientBg'
 import './components/Cursor.css'
@@ -18,6 +19,7 @@ function App() {
         <Navbar />
         <Hero />
         <Projects />
+        <Skills />
         <Contact />
       </div>
     </div>
