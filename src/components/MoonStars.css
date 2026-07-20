@@ -1,0 +1,56 @@
+.gradient-bg-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.floating-dots-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.gradient-blob-container {
+  position: absolute;
+  inset-inline: 0;
+  top: -10rem;
+  z-index: -10;
+  transform: translateZ(0);
+  overflow: hidden;
+  filter: blur(80px);
+}
+
+.gradient-blob {
+  position: relative;
+  left: calc(50% - 11rem);
+  aspect-ratio: 1155 / 678;
+  width: 36.125rem;
+  transform: translateX(-50%) rotate(30deg);
+  background: linear-gradient(135deg, #39d353, #161b22, #0d1117);
+  opacity: 0.25;
+  clip-path: polygon(
+    74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%,
+    80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%,
+    47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%,
+    17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%
+  );
+}
+
+.gradient-blob-secondary {
+  left: calc(80% - 30rem);
+  top: 20rem;
+  width: 50rem;
+  transform: translateX(-50%) rotate(-45deg);
+  background: linear-gradient(135deg, #0d1117, #161b22, #39d353);
+  opacity: 0.15;
+}
+
+@media (min-width: 640px) {
+  .gradient-blob {
+    left: calc(80% - 30rem);
+    width: 72.1875rem;
+  }
+}

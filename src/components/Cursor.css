@@ -1,0 +1,79 @@
+.cursor-dot,
+.cursor-follower {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  transition: width 0.2s, height 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  left: -100px;
+  top: -100px;
+}
+
+.cursor-follower {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid rgba(57, 211, 83, 0.4);
+  background: rgba(57, 211, 83, 0.05);
+  left: -100px;
+  top: -100px;
+}
+
+.cursor-dot.cursor-link,
+.cursor-follower.cursor-link {
+  width: 48px;
+  height: 48px;
+}
+
+.cursor-dot.cursor-link {
+  background: rgba(57, 211, 83, 0.15);
+}
+
+.cursor-follower.cursor-link {
+  border-color: var(--accent);
+  background: rgba(57, 211, 83, 0.1);
+}
+
+.cursor-dot.cursor-cta,
+.cursor-follower.cursor-cta {
+  width: 64px;
+  height: 64px;
+}
+
+.cursor-dot.cursor-cta {
+  background: rgba(57, 211, 83, 0.2);
+}
+
+.cursor-follower.cursor-cta {
+  border-color: var(--accent);
+  background: rgba(57, 211, 83, 0.15);
+}
+
+.cursor-dot.cursor-logo,
+.cursor-follower.cursor-logo {
+  width: 56px;
+  height: 56px;
+}
+
+.cursor-dot.cursor-logo {
+  background: rgba(57, 211, 83, 0.25);
+}
+
+.cursor-follower.cursor-logo {
+  border-color: var(--accent);
+  border-width: 2px;
+  background: rgba(57, 211, 83, 0.12);
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .cursor-dot,
+  .cursor-follower {
+    display: none !important;
+  }
+}
