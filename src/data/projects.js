@@ -31,7 +31,8 @@ const projects = [
     categoria: "hardware",
     descripcion: "IoT device with ESP32 and MQ-5 sensor for early LP gas leak detection. Concurrent backend in Rust with Axum and React frontend, with real-time telemetry via MQTT broker.",
     stack: ["ESP32", "Rust", "Axum", "React", "MQTT"],
-    url: "https://github.com/JmiguelRamriez/DetectaGas"
+    url: "https://github.com/JmiguelRamriez/DetectaGas",
+    imagenes: ["images/detecta.jpg"]
   },
   {
     titulo: "FINSIGHTS",
