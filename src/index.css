@@ -21,6 +21,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 
   @media (max-width: 1024px) {
     font-size: 16px;
@@ -183,6 +184,14 @@ code {
 .reveal-up.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.typewriter-cursor {
+  font-family: var(--mono);
+  color: var(--accent);
+  font-weight: 300;
+  transition: opacity 0.1s;
+  margin-left: 2px;
 }
 
 @media (hover: none) and (pointer: coarse) {

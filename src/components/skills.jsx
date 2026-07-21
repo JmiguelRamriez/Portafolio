@@ -10,7 +10,19 @@ const skillsData = [
         <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
       </svg>
     ),
-    items: ['KiCad', 'ESP32', 'Arduino', 'FPGA', 'Raspberry Pi', 'Allwinner V3s', 'HC-SR04', 'MQ-5', 'INMP441', 'PAM8403', 'Electronic Design'],
+    items: [
+      { name: 'KiCad', level: 80 },
+      { name: 'ESP32', level: 90 },
+      { name: 'Arduino', level: 98 },
+      { name: 'FPGA', level: 70 },
+      { name: 'Raspberry Pi', level: 67 },
+      { name: 'Allwinner V3s', level: 59 },
+      { name: 'HC-SR04', level: 100 },
+      { name: 'MQ-5', level: 100 },
+      { name: 'INMP441', level: 100 },
+      { name: 'PAM8403', level: 100 },
+      { name: 'Electronic Design', level: 78 },
+    ],
   },
   {
     titulo: 'Programming & Firmware',
@@ -21,7 +33,19 @@ const skillsData = [
         <polyline points="8 6 2 12 8 18"/>
       </svg>
     ),
-    items: ['C++', 'Python', 'Rust', 'MicroPython', 'Embedded Linux', 'Firmware', 'MQTT', 'I2C', 'SPI', 'UART', 'CAN'],
+    items: [
+      { name: 'C++', level: 60 },
+      { name: 'Python', level: 85 },
+      { name: 'Rust', level: 40 },
+      { name: 'MicroPython', level: 93 },
+      { name: 'Embedded Linux', level: 90 },
+      { name: 'Firmware', level: 90 },
+      { name: 'MQTT', level: 80 },
+      { name: 'I2C', level: 100 },
+      { name: 'SPI', level: 100 },
+      { name: 'UART', level: 100 },
+      { name: 'CAN', level: 100 },
+    ],
   },
   {
     titulo: 'Web & Software',
@@ -33,7 +57,17 @@ const skillsData = [
         <line x1="12" y1="17" x2="12" y2="21"/>
       </svg>
     ),
-    items: ['React', 'Flask', 'Axum', 'Node.js', 'Tkinter', 'REST APIs', 'Git', 'SQL', 'NoSQL'],
+    items: [
+      { name: 'React', level: 74 },
+      { name: 'Flask', level: 69 },
+      { name: 'Axum', level: 60 },
+      { name: 'Node.js', level: 76 },
+      { name: 'Tkinter', level: 67 },
+      { name: 'REST APIs', level: 80 },
+      { name: 'Git', level: 95 },
+      { name: 'SQL', level: 80 },
+      { name: 'NoSQL', level: 67 },
+    ],
   },
   {
     titulo: 'Complementary',
@@ -44,7 +78,12 @@ const skillsData = [
         <path d="M12 6v6l4 2"/>
       </svg>
     ),
-    items: ['Linux', 'Docker', 'Problem Solving', 'Teamwork'],
+    items: [
+      { name: 'Linux', level: 80 },
+      { name: 'Docker', level: 100 },
+      { name: 'Problem Solving', level: 100 },
+      { name: 'Teamwork', level: 100 },
+    ],
   },
 ]
 
@@ -58,6 +97,13 @@ function SkillCard({ skill, index }) {
       ([entry]) => {
         if (entry.isIntersecting) {
           el.classList.add('visible')
+          const bars = el.querySelectorAll('.skill-bar-fill')
+          bars.forEach((bar, i) => {
+            setTimeout(() => {
+              const w = bar.getAttribute('data-width')
+              bar.style.width = w + '%'
+            }, i * 50)
+          })
           obs.unobserve(el)
         }
       },
@@ -71,9 +117,17 @@ function SkillCard({ skill, index }) {
     <div className="skill-card reveal-up" ref={ref} data-color={skill.color} style={{ transitionDelay: `${index * 0.1}s` }}>
       <div className="skill-icon">{skill.icon}</div>
       <h3>{skill.titulo}</h3>
-      <div className="skill-tags">
+      <div className="skill-bars">
         {skill.items.map((item, i) => (
-          <span key={i}>{item}</span>
+          <div className="skill-bar-item" key={i}>
+            <div className="skill-bar-header">
+              <span className="skill-bar-name">{item.name}</span>
+              <span className="skill-bar-level">{item.level}%</span>
+            </div>
+            <div className="skill-bar-track">
+              <div className="skill-bar-fill" data-width={item.level} style={{ width: 0 }} />
+            </div>
+          </div>
         ))}
       </div>
     </div>

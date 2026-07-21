@@ -1,4 +1,5 @@
 import '../App.css'
+import Typewriter from './Typewriter'
 
 const skills = [
   'KiCad', 'PCB Design', 'C++', 'Python', 'Rust', 'React',
@@ -18,7 +19,7 @@ function Hero() {
 
         <h1>
           Robotics &amp; Digital Systems<br />
-          <span className="gradient-text">Engineering Student</span>
+          <span className="gradient-text"><Typewriter text="Engineering Student" /></span>
         </h1>
 
         <p>

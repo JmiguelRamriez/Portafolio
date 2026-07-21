@@ -19,6 +19,31 @@ function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    const links = document.querySelectorAll('.nav-link[href^="#"]')
+    const sections = Array.from(links).map(link => {
+      const id = link.getAttribute('href').slice(1)
+      return document.getElementById(id)
+    }).filter(Boolean)
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        let current = ''
+        entries.forEach(entry => {
+          if (entry.isIntersecting) current = entry.target.id
+        })
+        if (!current) return
+        links.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + current)
+        })
+      },
+      { threshold: 0.3, rootMargin: '-80px 0px 0px 0px' }
+    )
+
+    sections.forEach(s => obs.observe(s))
+    return () => obs.disconnect()
+  }, [])
+
   return (
     <nav ref={navRef}>
       <div className="nav-container">

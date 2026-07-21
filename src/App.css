@@ -86,6 +86,11 @@ nav.scrolled {
   background: rgba(57, 211, 83, 0.08);
 }
 
+.nav-link.active {
+  color: var(--accent);
+  background: rgba(57, 211, 83, 0.1);
+}
+
 .nav-cta {
   margin-left: 0.5rem;
   padding: 0.55rem 1.4rem;
