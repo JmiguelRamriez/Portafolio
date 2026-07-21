@@ -72,7 +72,6 @@
   border-radius: 10px;
   overflow: hidden;
   flex-shrink: 0;
-  border: 1px solid var(--border);
   background: var(--bg);
   display: flex;
   align-items: center;

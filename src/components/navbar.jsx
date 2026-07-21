@@ -63,7 +63,7 @@ function Navbar() {
           <li><a href="#projects" className="nav-link" data-cursor="link" onClick={closeMenu}>Projects</a></li>
           <li><a href="#skills" className="nav-link" data-cursor="link" onClick={closeMenu}>Skills</a></li>
           <li><a href="#experience" className="nav-link" data-cursor="link" onClick={closeMenu}>Experience</a></li>
-          <li><a href="/Portafolio/files/cv.pdf" download className="nav-link" data-cursor="link" onClick={closeMenu}>CV</a></li>
+          <li><a href="/Portafolio/files/Cv_Jose_Miguel_Ramirez_.pdf" download className="nav-link" data-cursor="link" onClick={closeMenu}>CV</a></li>
           <li><a href="#contact" className="btn btn-primary nav-cta" data-cursor="cta" onClick={closeMenu}>Contact</a></li>
         </ul>
 

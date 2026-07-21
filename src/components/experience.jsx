@@ -3,6 +3,14 @@ import './Experience.css'
 
 const experienceData = [
   {
+    type: 'education',
+    title: 'B.S. in Robotics and Digital Systems Engineering',
+    institution: 'ITESM — Tecnológico de Monterrey',
+    period: 'Aug 2024 – Expected 2028',
+    description: 'Pursuing a degree focused on embedded systems, PCB design, firmware development, and digital systems engineering.',
+    logo: null,
+  },
+  {
     type: 'work',
     title: 'Automated Positioning System Contractor — PEPS Validation',
     institution: 'valeo-peps',
@@ -16,7 +24,7 @@ const experienceData = [
   },
   {
     type: 'work',
-    title: 'Cloud Operations & Documentation Intern',
+    title: 'IT Consultant',
     institution: 'BinarySails',
     period: 'May 2025 – Present',
     description: [
@@ -26,14 +34,6 @@ const experienceData = [
       'Professionalized the delivery of project documentation by standardizing the organization of electronic and firmware files within shared cloud drives.',
     ],
     logo: 'images/BinarySails.png',
-  },
-  {
-    type: 'education',
-    title: 'B.S. in Robotics and Digital Systems Engineering',
-    institution: 'ITESM — Tecnológico de Monterrey',
-    period: 'Aug 2024 – Expected 2028',
-    description: 'Pursuing a degree focused on embedded systems, PCB design, firmware development, and digital systems engineering.',
-    logo: null,
   },
 ]
 
