@@ -54,5 +54,21 @@ const projects = [
     url: "https://github.com/JmiguelRamriez/flight_monitor",
     imagenes: ["images/Flight.png"]
   },
+  {
+    titulo: "Untold Legends — Visual Novel Engine",
+    categoria: "software",
+    descripcion: "Interactive visual novel with dynamic dialogue branching, character management, and multiple endings. Built in Python with a custom narrative engine featuring save/load and scene transitions. Final project for an elective course.",
+    stack: ["Python", "OOP", "Game Development"],
+    url: "https://github.com/JmiguelRamriez/Juego-Optativa",
+    imagenes: ["images/juego.png", "images/Juego_menu.png"]
+  },
+  {
+    titulo: "Punto de Vista — University News Platform",
+    categoria: "software",
+    descripcion: "News website covering university events and faculty stories, featuring a dedicated article about professor Spoturno's contributions to the academic community. Editorial layout with accessible content presentation.",
+    stack: ["HTML", "CSS", "JavaScript", "Web Design"],
+    url: "https://github.com/JmiguelRamriez/Punto-de-Vista-",
+    imagenes: ["images/Punto_Vista.png"]
+  },
 ]
 export default projects
