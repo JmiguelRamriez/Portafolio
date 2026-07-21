@@ -3,6 +3,7 @@ import './Project.css'
 import projects from "../data/projects"
 
 const categories = [
+  { key: 'featured', label: 'Featured' },
   { key: 'todos', label: 'All' },
   { key: 'hardware', label: 'Hardware' },
   { key: 'software', label: 'Software' },
@@ -113,7 +114,9 @@ function ProjectCard({ project, index }) {
 
 function Projects() {
   const [active, setActive] = useState('todos')
-  const filtered = active === 'todos' ? projects : projects.filter(p => p.categoria === active)
+  const filtered = active === 'featured'
+    ? projects.filter(p => p.featured)
+    : active === 'todos' ? projects : projects.filter(p => p.categoria === active)
 
   return (
     <section id="projects">

@@ -1,6 +1,7 @@
 const projects = [
   {
     titulo: "Industrial SBC with Allwinner V3s",
+    featured: true,
     categoria: "hardware",
     descripcion: "4-layer Single Board Computer designed in KiCad around the Allwinner V3s processor (ARM Cortex-A7), featuring EA3036CQB PMIC, Ethernet PHY, and integrated RTC. Includes differential pair routing with controlled impedance for USB 2.0 High-Speed and layout optimized for automated SMT manufacturing.",
     stack: ["KiCad", "Allwinner V3s", "Embedded Linux", "PCB Design"],
@@ -9,6 +10,7 @@ const projects = [
   },
   {
     titulo: "valeo-peps — Automated Positioning System for PEPS Validation",
+    featured: true,
     categoria: "hardware",
     descripcion: "CoreXY platform for validating passive access systems (PEPS) in automotive. Firmware in C++ with non-blocking motor control and trapezoidal acceleration profiles, autonomous calibration with 4 HC-SR04 ultrasonic sensors (±1 cm accuracy in 390×1300 mm area), and Python/Tkinter GUI with real-time control and emergency stop.",
     stack: ["C++", "Python", "Tkinter", "Arduino", "CoreXY"],
@@ -25,6 +27,7 @@ const projects = [
   },
   {
     titulo: "DetectaGas — IoT Gas Leak Prevention System",
+    featured: true,
     categoria: "hardware",
     descripcion: "IoT device with ESP32 and MQ-5 sensor for early LP gas leak detection. Concurrent backend in Rust with Axum and React frontend, with real-time telemetry via MQTT broker.",
     stack: ["ESP32", "Rust", "Axum", "React", "MQTT"],
@@ -40,6 +43,7 @@ const projects = [
   },
   {
     titulo: "FinTracker",
+    featured: true,
     categoria: "software",
     descripcion: "Python desktop application for personal financial management. Modular architecture with separate layers for core logic, data persistence, and user interface built with Tkinter.",
     stack: ["Python", "Tkinter", "Pandas"],
