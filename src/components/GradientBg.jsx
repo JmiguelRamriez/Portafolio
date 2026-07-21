@@ -41,7 +41,7 @@ export default function GradientBg() {
         }
         ctx.beginPath()
         ctx.arc(dot.x, dot.y, dot.r, 0, Math.PI * 2)
-        ctx.fillStyle = 'rgba(57,211,83,0.4)'
+        ctx.fillStyle = 'rgba(167,139,250,0.4)'
         ctx.fill()
       }
 

@@ -3,12 +3,14 @@
 }
 
 .skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.25rem;
 }
 
 .skill-card {
+  flex: 0 1 300px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -35,55 +37,55 @@
 }
 
 .skill-card[data-color="green"] {
-  --card-accent: #39d353;
-  --card-accent-bg: rgba(57, 211, 83, 0.08);
-  --card-accent-border: rgba(57, 211, 83, 0.2);
-  --card-glow: rgba(57, 211, 83, 0.15);
+  --card-accent: #a78bfa;
+  --card-accent-bg: rgba(167, 139, 250, 0.08);
+  --card-accent-border: rgba(167, 139, 250, 0.2);
+  --card-glow: rgba(167, 139, 250, 0.15);
 }
 .skill-card[data-color="green"]::before {
-  background: linear-gradient(90deg, #39d353, transparent);
+  background: linear-gradient(90deg, #a78bfa, transparent);
 }
 .skill-card[data-color="green"]:hover {
-  border-color: #39d353;
+  border-color: #a78bfa;
 }
 
 .skill-card[data-color="blue"] {
-  --card-accent: #58a6ff;
-  --card-accent-bg: rgba(88, 166, 255, 0.08);
-  --card-accent-border: rgba(88, 166, 255, 0.2);
-  --card-glow: rgba(88, 166, 255, 0.15);
+  --card-accent: #818cf8;
+  --card-accent-bg: rgba(129, 140, 248, 0.08);
+  --card-accent-border: rgba(129, 140, 248, 0.2);
+  --card-glow: rgba(129, 140, 248, 0.15);
 }
 .skill-card[data-color="blue"]::before {
-  background: linear-gradient(90deg, #58a6ff, transparent);
+  background: linear-gradient(90deg, #818cf8, transparent);
 }
 .skill-card[data-color="blue"]:hover {
-  border-color: #58a6ff;
+  border-color: #818cf8;
 }
 
 .skill-card[data-color="purple"] {
-  --card-accent: #bc8cff;
-  --card-accent-bg: rgba(188, 140, 255, 0.08);
-  --card-accent-border: rgba(188, 140, 255, 0.2);
-  --card-glow: rgba(188, 140, 255, 0.15);
+  --card-accent: #c084fc;
+  --card-accent-bg: rgba(192, 132, 252, 0.08);
+  --card-accent-border: rgba(192, 132, 252, 0.2);
+  --card-glow: rgba(192, 132, 252, 0.15);
 }
 .skill-card[data-color="purple"]::before {
-  background: linear-gradient(90deg, #bc8cff, transparent);
+  background: linear-gradient(90deg, #c084fc, transparent);
 }
 .skill-card[data-color="purple"]:hover {
-  border-color: #bc8cff;
+  border-color: #c084fc;
 }
 
 .skill-card[data-color="amber"] {
-  --card-accent: #d29922;
-  --card-accent-bg: rgba(210, 153, 34, 0.08);
-  --card-accent-border: rgba(210, 153, 34, 0.2);
-  --card-glow: rgba(210, 153, 34, 0.15);
+  --card-accent: #e879f9;
+  --card-accent-bg: rgba(232, 121, 249, 0.08);
+  --card-accent-border: rgba(232, 121, 249, 0.2);
+  --card-glow: rgba(232, 121, 249, 0.15);
 }
 .skill-card[data-color="amber"]::before {
-  background: linear-gradient(90deg, #d29922, transparent);
+  background: linear-gradient(90deg, #e879f9, transparent);
 }
 .skill-card[data-color="amber"]:hover {
-  border-color: #d29922;
+  border-color: #e879f9;
 }
 
 .skill-icon {

@@ -19,8 +19,8 @@
 .cursor-follower {
   width: 32px;
   height: 32px;
-  border: 1.5px solid rgba(57, 211, 83, 0.4);
-  background: rgba(57, 211, 83, 0.05);
+  border: 1.5px solid rgba(167, 139, 250, 0.4);
+  background: rgba(167, 139, 250, 0.05);
   left: -100px;
   top: -100px;
 }
@@ -32,12 +32,12 @@
 }
 
 .cursor-dot.cursor-link {
-  background: rgba(57, 211, 83, 0.15);
+  background: rgba(167, 139, 250, 0.15);
 }
 
 .cursor-follower.cursor-link {
   border-color: var(--accent);
-  background: rgba(57, 211, 83, 0.1);
+  background: rgba(167, 139, 250, 0.1);
 }
 
 .cursor-dot.cursor-cta,
@@ -47,12 +47,12 @@
 }
 
 .cursor-dot.cursor-cta {
-  background: rgba(57, 211, 83, 0.2);
+  background: rgba(167, 139, 250, 0.2);
 }
 
 .cursor-follower.cursor-cta {
   border-color: var(--accent);
-  background: rgba(57, 211, 83, 0.15);
+  background: rgba(167, 139, 250, 0.15);
 }
 
 .cursor-dot.cursor-logo,
@@ -62,13 +62,13 @@
 }
 
 .cursor-dot.cursor-logo {
-  background: rgba(57, 211, 83, 0.25);
+  background: rgba(167, 139, 250, 0.25);
 }
 
 .cursor-follower.cursor-logo {
   border-color: var(--accent);
   border-width: 2px;
-  background: rgba(57, 211, 83, 0.12);
+  background: rgba(167, 139, 250, 0.12);
 }
 
 @media (hover: none) and (pointer: coarse) {
