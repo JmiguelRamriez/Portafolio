@@ -115,11 +115,52 @@ nav.scrolled {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(57, 211, 83, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(57, 211, 83, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
-  mask-image: radial-gradient(80% 80% at 50% 40%, #000 20%, transparent 100%);
-  -webkit-mask-image: radial-gradient(80% 80% at 50% 40%, #000 20%, transparent 100%);
+    /* board substrate tint */
+    radial-gradient(ellipse at 50% 40%, rgba(57, 211, 83, 0.04), transparent 60%),
+
+    /* fine grid */
+    linear-gradient(rgba(57, 211, 83, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57, 211, 83, 0.025) 1px, transparent 1px),
+
+    /* horizontal traces */
+    linear-gradient(transparent 48px, rgba(57, 211, 83, 0.12) 48px, rgba(57, 211, 83, 0.12) 51px, transparent 51px),
+    linear-gradient(transparent 148px, rgba(57, 211, 83, 0.08) 148px, rgba(57, 211, 83, 0.08) 150px, transparent 150px),
+    linear-gradient(transparent 248px, rgba(57, 211, 83, 0.15) 248px, rgba(57, 211, 83, 0.15) 250px, transparent 250px),
+
+    /* vertical traces */
+    linear-gradient(90deg, transparent 98px, rgba(57, 211, 83, 0.1) 98px, rgba(57, 211, 83, 0.1) 100px, transparent 100px),
+    linear-gradient(90deg, transparent 198px, rgba(57, 211, 83, 0.12) 198px, rgba(57, 211, 83, 0.12) 201px, transparent 201px),
+
+    /* 45° diagonals */
+    linear-gradient(45deg, transparent 69px, rgba(57, 211, 83, 0.07) 69px, rgba(57, 211, 83, 0.07) 70px, transparent 70px),
+    linear-gradient(-45deg, transparent 139px, rgba(57, 211, 83, 0.06) 139px, rgba(57, 211, 83, 0.06) 140px, transparent 140px),
+
+    /* vias / pads */
+    radial-gradient(circle at 50px 50px, rgba(57, 211, 83, 0.25) 3px, transparent 4px),
+    radial-gradient(circle at 150px 150px, rgba(57, 211, 83, 0.2) 2px, transparent 3px),
+    radial-gradient(circle at 250px 100px, rgba(57, 211, 83, 0.3) 4px, transparent 5px),
+    radial-gradient(circle at 100px 250px, rgba(57, 211, 83, 0.15) 2px, transparent 3px);
+
+  background-size:
+    100% 100%,       /* board tint */
+    50px 50px,       /* fine grid h */
+    50px 50px,       /* fine grid v */
+    100px 100px,     /* h-trace 1 (3px at 48-51px) */
+    200px 200px,     /* h-trace 2 (2px at 148-150px) */
+    300px 300px,     /* h-trace 3 (2px at 248-250px) */
+    200px 200px,     /* v-trace 1 (2px at 98-100px) */
+    300px 300px,     /* v-trace 2 (3px at 198-201px) */
+    150px 150px,     /* diag 45 (1px at 69-70px) */
+    250px 250px,     /* diag -45 (1px at 139-140px) */
+    200px 200px,     /* via 1 */
+    300px 300px,     /* via 2 */
+    400px 400px,     /* via 3 */
+    300px 300px;     /* via 4 */
+
+  background-repeat: repeat;
+
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 25%, transparent 65%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 25%, transparent 65%);
   pointer-events: none;
 }
 
