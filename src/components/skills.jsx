@@ -4,6 +4,7 @@ import './Skills.css'
 const skillsData = [
   {
     titulo: 'Hardware & Electronics',
+    color: 'green',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
@@ -13,6 +14,7 @@ const skillsData = [
   },
   {
     titulo: 'Programming & Firmware',
+    color: 'blue',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="16 18 22 12 16 6"/>
@@ -23,6 +25,7 @@ const skillsData = [
   },
   {
     titulo: 'Web & Software',
+    color: 'purple',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="3" width="20" height="14" rx="2"/>
@@ -34,6 +37,7 @@ const skillsData = [
   },
   {
     titulo: 'Complementary',
+    color: 'amber',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10"/>
@@ -64,7 +68,7 @@ function SkillCard({ skill, index }) {
   }, [])
 
   return (
-    <div className="skill-card reveal-up" ref={ref} style={{ transitionDelay: `${index * 0.1}s` }}>
+    <div className="skill-card reveal-up" ref={ref} data-color={skill.color} style={{ transitionDelay: `${index * 0.1}s` }}>
       <div className="skill-icon">{skill.icon}</div>
       <h3>{skill.titulo}</h3>
       <div className="skill-tags">
