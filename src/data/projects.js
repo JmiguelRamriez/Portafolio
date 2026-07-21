@@ -55,7 +55,7 @@ const projects = [
     imagenes: ["images/Flight.png"]
   },
   {
-    titulo: "Untold Legends — Visual Novel Engine",
+    titulo: "Nueva Tenochtitlan — Visual Novel Engine",
     categoria: "software",
     descripcion: "Interactive visual novel with dynamic dialogue branching, character management, and multiple endings. Built in Python with a custom narrative engine featuring save/load and scene transitions. Final project for an elective course.",
     stack: ["Python", "OOP", "Game Development"],
