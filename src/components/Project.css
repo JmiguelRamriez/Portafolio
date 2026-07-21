@@ -120,6 +120,15 @@
   object-fit: cover;
 }
 
+a.project-item {
+  text-decoration: none;
+  color: inherit;
+}
+
+a.project-item:visited {
+  color: inherit;
+}
+
 @media (max-width: 768px) {
   .project-item {
     flex-wrap: wrap;
