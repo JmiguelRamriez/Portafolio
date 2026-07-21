@@ -212,39 +212,14 @@ nav.scrolled {
   bottom: 6rem;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
   color: var(--text-secondary);
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   z-index: 2;
+  animation: scroll-arrow 2s ease-in-out infinite;
 }
 
-.scroll-mouse {
-  width: 24px;
-  height: 38px;
-  border: 1.5px solid var(--text-secondary);
-  border-radius: 12px;
-  display: flex;
-  justify-content: center;
-  padding-top: 8px;
-}
-
-.scroll-wheel {
-  width: 3px;
-  height: 8px;
-  background: var(--accent);
-  border-radius: 2px;
-  animation: scroll-wheel 2s ease-in-out infinite;
-}
-
-@keyframes scroll-wheel {
-  0% { opacity: 1; transform: translateY(0); }
-  100% { opacity: 0; transform: translateY(12px); }
+@keyframes scroll-arrow {
+  0%, 100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  50% { opacity: 0.4; transform: translateX(-50%) translateY(6px); }
 }
 
 /* ─── PROJECTS ─── */

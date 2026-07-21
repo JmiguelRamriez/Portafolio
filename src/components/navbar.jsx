@@ -32,6 +32,7 @@ function Navbar() {
           <li><a href="#hero" className="nav-link" data-cursor="link">Home</a></li>
           <li><a href="#projects" className="nav-link" data-cursor="link">Projects</a></li>
           <li><a href="#skills" className="nav-link" data-cursor="link">Skills</a></li>
+          <li><a href="/Portafolio/files/cv.pdf" download className="nav-link" data-cursor="link">CV</a></li>
           <li><a href="#contact" className="btn btn-primary nav-cta" data-cursor="cta">Contact</a></li>
         </ul>
       </div>

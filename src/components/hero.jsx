@@ -34,6 +34,7 @@ function Hero() {
             </svg>
           </a>
           <a href="#contact" className="btn btn-outline" data-cursor="link">Contact Me</a>
+          <a href="/Portafolio/files/cv.pdf" download className="btn btn-outline" data-cursor="link">Download CV</a>
         </div>
 
         <div className="hero-socials">
@@ -55,10 +56,9 @@ function Hero() {
       </div>
 
       <div className="scroll-hint">
-        <div className="scroll-mouse">
-          <div className="scroll-wheel" />
-        </div>
-        <span>scroll</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+        </svg>
       </div>
     </section>
   )
