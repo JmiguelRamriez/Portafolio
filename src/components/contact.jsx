@@ -1,6 +1,29 @@
+import { useState } from 'react'
 import './Contact.css'
 
 function Contact() {
+  const [status, setStatus] = useState('idle')
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+    setStatus('loading')
+    const form = e.target
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' },
+      })
+      if (res.ok) {
+        setStatus('success')
+        form.reset()
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
+  }
   return (
     <section id="contact">
       <div className="container">
@@ -87,6 +110,7 @@ function Contact() {
               className="contact-form"
               action="https://formspree.io/f/xgogyjzn"
               method="POST"
+              onSubmit={handleSubmit}
             >
               <div className="form-row">
                 <div className="form-group">
@@ -106,12 +130,38 @@ function Contact() {
                 <label htmlFor="message">Message</label>
                 <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required />
               </div>
-              <button type="submit" className="btn btn-primary" data-cursor="cta">
-                <span>Send Message</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                  <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+              <button type="submit" className="btn btn-primary" data-cursor="cta" disabled={status === 'loading'}>
+                {status === 'loading' ? (
+                  <span className="btn-loading">
+                    <span className="spinner" />
+                    Sending...
+                  </span>
+                ) : (
+                  <>
+                    <span>Send Message</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                      <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </>
+                )}
               </button>
+
+              {status === 'success' && (
+                <div className="form-feedback success">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  Message sent! I&apos;ll get back to you soon.
+                </div>
+              )}
+              {status === 'error' && (
+                <div className="form-feedback error">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
+                  </svg>
+                  Something went wrong. Please try again.
+                </div>
+              )}
             </form>
           </div>
         </div>

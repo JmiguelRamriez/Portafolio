@@ -41,6 +41,7 @@ function Placeholder({ project }) {
 
 function ProjectCard({ project, index }) {
   const [imgIndex, setImgIndex] = useState(0)
+  const [loaded, setLoaded] = useState(false)
   const intervalRef = useRef(null)
   const cardRef = useRef(null)
 
@@ -86,7 +87,13 @@ function ProjectCard({ project, index }) {
     >
       <div className="project-card-image">
         {project.imagenes && project.imagenes.length > 0 ? (
-          <img src={project.imagenes[imgIndex]} alt={project.titulo} loading="lazy" />
+          <img
+            src={project.imagenes[imgIndex]}
+            alt={project.titulo}
+            loading="lazy"
+            className={loaded ? 'loaded' : ''}
+            onLoad={() => setLoaded(true)}
+          />
         ) : (
           <Placeholder project={project} />
         )}

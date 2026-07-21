@@ -3,8 +3,10 @@ import Navbar from './components/navbar'
 import Hero from './components/hero'
 import Projects from './components/projects'
 import Skills from './components/skills'
+import Experience from './components/experience'
 import Contact from './components/contact'
 import Footer from './components/footer'
+import BackToTop from './components/BackToTop'
 import GradientBg from './components/GradientBg'
 import './components/Cursor.css'
 import './components/MoonStars.css'
@@ -21,9 +23,11 @@ function App() {
         <Hero />
         <Projects />
         <Skills />
+        <Experience />
         <Contact />
         <Footer />
       </div>
+      <BackToTop />
     </div>
   )
 }
