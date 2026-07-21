@@ -89,6 +89,10 @@
   flex-shrink: 0;
 }
 
+.project-item:hover .project-info {
+  padding-right: 300px;
+}
+
 .project-item:hover .project-arrow {
   color: var(--accent);
   transform: translateX(4px);

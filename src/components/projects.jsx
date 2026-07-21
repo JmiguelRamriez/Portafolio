@@ -1,9 +1,11 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import './Project.css'
 import projects from "../data/projects"
 
 function ProjectItem({ project, index }) {
   const itemRef = useRef(null)
+  const [imgIndex, setImgIndex] = useState(0)
+  const intervalRef = useRef(null)
 
   useEffect(() => {
     const el = itemRef.current
@@ -21,6 +23,18 @@ function ProjectItem({ project, index }) {
     return () => obs.disconnect()
   }, [])
 
+  function handleMouseEnter() {
+    if (!project.imagenes || project.imagenes.length < 2) return
+    intervalRef.current = setInterval(() => {
+      setImgIndex(prev => (prev + 1) % project.imagenes.length)
+    }, 1500)
+  }
+
+  function handleMouseLeave() {
+    clearInterval(intervalRef.current)
+    setImgIndex(0)
+  }
+
   const Wrapper = project.url ? 'a' : 'div'
   const wrapperProps = project.url
     ? { href: project.url, target: '_blank', rel: 'noopener noreferrer' }
@@ -31,6 +45,8 @@ function ProjectItem({ project, index }) {
       className="project-item reveal-up"
       ref={itemRef}
       data-cursor="link"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       {...wrapperProps}
     >
       <span className="project-number">
@@ -50,9 +66,9 @@ function ProjectItem({ project, index }) {
           <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       </div>
-      {project.imagenes && project.imagenes[0] && (
+      {project.imagenes && project.imagenes.length > 0 && (
         <div className="project-preview">
-          <img src={project.imagenes[0]} alt={project.titulo} loading="lazy" />
+          <img src={project.imagenes[imgIndex]} alt={project.titulo} loading="lazy" />
         </div>
       )}
     </Wrapper>
