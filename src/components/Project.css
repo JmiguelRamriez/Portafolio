@@ -35,7 +35,7 @@
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.25rem;
   animation: fade-in 0.3s ease;
 }
@@ -222,7 +222,13 @@
 
 /* ─── Responsive ─── */
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
   .projects-grid {
     grid-template-columns: 1fr;
   }
