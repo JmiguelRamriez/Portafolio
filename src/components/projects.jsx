@@ -113,7 +113,7 @@ function ProjectCard({ project, index }) {
 }
 
 function Projects() {
-  const [active, setActive] = useState('todos')
+  const [active, setActive] = useState('featured')
   const filtered = active === 'featured'
     ? projects.filter(p => p.featured)
     : active === 'todos' ? projects : projects.filter(p => p.categoria === active)
