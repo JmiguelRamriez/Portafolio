@@ -3,18 +3,22 @@ import './Experience.css'
 
 const experienceData = [
   {
-    type: 'education',
-    title: 'B.S. in Robotics and Digital Systems Engineering',
-    institution: 'ITESM — Tecnológico de Monterrey',
-    period: '2024 – 2028',
-    description: 'Pursuing a degree focused on embedded systems, PCB design, firmware development, and digital systems engineering.',
+    type: 'work',
+    title: 'Automated Positioning System Contractor — PEPS Validation',
+    institution: 'valeo-peps',
+    period: 'Apr 2026 – Jun 2026',
+    description: [
+      'Designed and implemented CoreXY kinematics firmware in C++ with non-blocking stepper control, trapezoidal acceleration profiles, and a serial command protocol for remote operation.',
+      'Built an autonomous workspace calibration system using 4 HC-SR04 ultrasonic sensors with a halving-approach algorithm for precise spatial positioning across the designated area.',
+      'Developed a Python/Tkinter GUI for real-time control, programmable movement sequences with EEPROM persistence, configurable origin selection, and emergency stop handling.',
+    ],
     logo: null,
   },
   {
     type: 'work',
     title: 'Cloud Operations & Documentation Intern',
     institution: 'BinarySails',
-    period: 'Summer 2025',
+    period: 'May 2025 – Present',
     description: [
       'Collaborated to verify and standardize Microsoft OneDrive functionality, remote sharing, and synchronization across multiple external computers.',
       'Formulated an official instructional curriculum syllabus outlining cloud storage collaboration techniques and synchronization states for workplace environments.',
@@ -24,15 +28,11 @@ const experienceData = [
     logo: 'images/BinarySails.png',
   },
   {
-    type: 'work',
-    title: 'Automated Positioning System — PEPS Validation',
-    institution: 'valeo-peps',
-    period: '2026',
-    description: [
-      'Designed and implemented CoreXY kinematics firmware in C++ with non-blocking stepper control, trapezoidal acceleration profiles, and a serial command protocol for remote operation.',
-      'Built an autonomous workspace calibration system using 4 HC-SR04 ultrasonic sensors with a halving-approach algorithm for precise spatial positioning across the designated area.',
-      'Developed a Python/Tkinter GUI for real-time control, programmable movement sequences with EEPROM persistence, configurable origin selection, and emergency stop handling.',
-    ],
+    type: 'education',
+    title: 'B.S. in Robotics and Digital Systems Engineering',
+    institution: 'ITESM — Tecnológico de Monterrey',
+    period: 'Aug 2024 – Expected 2028',
+    description: 'Pursuing a degree focused on embedded systems, PCB design, firmware development, and digital systems engineering.',
     logo: null,
   },
 ]
