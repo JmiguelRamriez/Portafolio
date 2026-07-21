@@ -21,11 +21,17 @@ function ProjectItem({ project, index }) {
     return () => obs.disconnect()
   }, [])
 
+  const Wrapper = project.url ? 'a' : 'div'
+  const wrapperProps = project.url
+    ? { href: project.url, target: '_blank', rel: 'noopener noreferrer' }
+    : {}
+
   return (
-    <div
+    <Wrapper
       className="project-item reveal-up"
       ref={itemRef}
       data-cursor="link"
+      {...wrapperProps}
     >
       <span className="project-number">
         {String(index + 1).padStart(2, '0')}
@@ -49,7 +55,7 @@ function ProjectItem({ project, index }) {
           <img src={project.imagenes[0]} alt={project.titulo} loading="lazy" />
         </div>
       )}
-    </div>
+    </Wrapper>
   )
 }
 

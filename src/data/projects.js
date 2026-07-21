@@ -23,6 +23,18 @@ const projects = [
     stack: ["ESP32", "Rust", "Axum", "React", "MQTT"]
   },
   {
+    titulo: "Dashboard",
+    descripcion: "Full-stack personal finance dashboard developed for Capital One HackMTY 2025. Features transaction visualization, income/expense tracking, and AI-powered financial insights via Google Gemini API. Built with Next.js frontend and FastAPI microservices architecture.",
+    stack: ["Next.js", "TypeScript", "FastAPI", "Python", "Google Gemini", "Tailwind CSS"],
+    url: "https://github.com/JmiguelRamriez/HackMTY-2025"
+  },
+  {
+    titulo: "Finances",
+    descripcion: "Python desktop application for personal financial management. Modular architecture with separate layers for core logic, data persistence, and user interface built with Tkinter.",
+    stack: ["Python", "Tkinter", "Pandas"],
+    url: "https://github.com/JmiguelRamriez/Control-financiero"
+  },
+  {
     titulo: "Commercial Flight Data Analysis",
     descripcion: "Python pipeline for cleaning and processing commercial flight datasets, with modular scripts that significantly reduce preprocessing time for trend analysis.",
     stack: ["Python", "Pandas", "Data Analysis"],
