@@ -30,8 +30,8 @@ const skillsData = [
       </svg>
     ),
     items: [
-      { name: 'C++', level: 60 },
-      { name: 'Python', level: 85 },
+      { name: 'C++', level: 56 },
+      { name: 'Python', level: 75 },
       { name: 'Rust', level: 40 },
       { name: 'MicroPython', level: 93 },
       { name: 'Embedded Linux', level: 90 },
@@ -72,7 +72,7 @@ const skillsData = [
     ),
     items: [
       { name: 'Linux', level: 80 },
-      { name: 'Docker', level: 100 },
+      { name: 'Docker', level: 69 },
       { name: 'Problem Solving', level: 100 },
       { name: 'Teamwork', level: 100 },
     ],

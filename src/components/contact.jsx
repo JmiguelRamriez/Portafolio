@@ -47,6 +47,18 @@ function Contact() {
                   <span className="contact-info-value">Querétaro, Mexico</span>
                 </div>
               </div>
+
+              <div className="contact-info-item">
+                <div className="contact-info-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M9.5 2L2 9.5 9.5 17 17 9.5 9.5 2z"/><path d="M9.5 17L2 24.5 9.5 32 17 24.5 9.5 17z" transform="rotate(45 9.5 17)"/>
+                  </svg>
+                </div>
+                <div>
+                  <p className="contact-info-label">Discord</p>
+                  <span className="contact-info-value">miwe9938</span>
+                </div>
+              </div>
             </div>
 
             <div className="contact-socials">
