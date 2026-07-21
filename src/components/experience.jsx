@@ -7,13 +7,13 @@ const experienceData = [
     title: 'B.S. in Robotics and Digital Systems Engineering',
     institution: 'ITESM — Tecnológico de Monterrey',
     period: 'Aug 2024 – Expected 2028',
-    description: 'Pursuing a degree focused on embedded systems, PCB design, firmware development, and digital systems engineering.',
+    description: 'Developing expertise in embedded firmware for ARM-based microcontrollers, FPGA design (VHDL/Verilog), and real-time control systems for robotic applications. Studying computer vision, sensor fusion, and autonomous navigation algorithms, reinforced by hands-on projects in PCB design, ROS-based control architectures, and IoT system integration with a strong foundation in C/C++, Python, and MATLAB.',
     logo: null,
   },
   {
     type: 'work',
-    title: 'Automated Positioning System Contractor — PEPS Validation',
-    institution: 'valeo-peps',
+    title: 'Automated Positioning System — PEPS Validation',
+    institution: 'Valeo Contractor',
     period: 'Apr 2026 – Jun 2026',
     description: [
       'Designed and implemented CoreXY kinematics firmware in C++ with non-blocking stepper control, trapezoidal acceleration profiles, and a serial command protocol for remote operation.',
