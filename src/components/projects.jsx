@@ -3,7 +3,7 @@ import './Project.css'
 import projects from "../data/projects"
 
 const categories = [
-  { key: 'todos', label: 'Todos' },
+  { key: 'todos', label: 'All' },
   { key: 'hardware', label: 'Hardware' },
   { key: 'software', label: 'Software' },
   { key: 'data', label: 'Data' },
@@ -102,10 +102,9 @@ function ProjectCard({ project, index }) {
         <h3>{project.titulo}</h3>
         <p>{project.descripcion}</p>
         <div className="project-card-tags">
-          {project.stack.slice(0, 4).map((tech, i) => (
+          {project.stack.map((tech, i) => (
             <span key={i}>{tech}</span>
           ))}
-          {project.stack.length > 4 && <span className="tag-more">+{project.stack.length - 4}</span>}
         </div>
       </div>
     </a>
