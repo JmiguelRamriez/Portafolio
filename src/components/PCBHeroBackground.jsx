@@ -35,7 +35,11 @@ function route(x1, y1, x2, y2, bends = 3) {
 }
 
 function toPath(pts) {
-  return 'M ' + pts.map(p => `${(p[0] || 0).toFixed(1)} ${(p[1] || 0).toFixed(1)}`).join(' L ')
+  return 'M ' + pts.map(p => {
+    const x = typeof p[0] === 'number' ? p[0] : 0;
+    const y = typeof p[1] === 'number' ? p[1] : 0;
+    return `${x.toFixed(1)} ${y.toFixed(1)}`;
+  }).join(' L ');
 }
 
 // ─── SVG Building Blocks ───
@@ -466,7 +470,7 @@ const KEEPOUTS = [
 
 function PCBHeroBackground() {
   const allTraces = useMemo(() => {
-    return TRACE_ROUTES.map(t => ({...t, path: toPath(route(t.pts[0], t.pts[1], t.pts[2], t.pts[3], t.bends || 3)) }))
+    return TRACE_ROUTES.map(t => ({...t, path: toPath(t.pts) }))
   }, [])
 
   const viaPositions = useMemo(() => {
