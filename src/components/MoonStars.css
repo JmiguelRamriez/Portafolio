@@ -29,7 +29,7 @@
   aspect-ratio: 1155 / 678;
   width: 36.125rem;
   transform: translateX(-50%) rotate(30deg);
-  background: linear-gradient(135deg, #a78bfa, #161b22, #0d1117);
+  background: linear-gradient(135deg, #8b5cf6, #14141c, #0a0a0f);
   opacity: 0.25;
   clip-path: polygon(
     74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%,
@@ -44,7 +44,7 @@
   top: 20rem;
   width: 50rem;
   transform: translateX(-50%) rotate(-45deg);
-  background: linear-gradient(135deg, #0d1117, #161b22, #a78bfa);
+  background: linear-gradient(135deg, #0a0a0f, #14141c, #8b5cf6);
   opacity: 0.15;
 }
 

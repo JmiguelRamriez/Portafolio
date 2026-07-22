@@ -89,13 +89,6 @@ function SkillCard({ skill, index }) {
       ([entry]) => {
         if (entry.isIntersecting) {
           el.classList.add('visible')
-          const bars = el.querySelectorAll('.skill-bar-fill')
-          bars.forEach((bar, i) => {
-            setTimeout(() => {
-              const w = bar.getAttribute('data-width')
-              bar.style.width = w + '%'
-            }, i * 50)
-          })
           obs.unobserve(el)
         }
       },
@@ -109,16 +102,9 @@ function SkillCard({ skill, index }) {
     <div className="skill-card reveal-up" ref={ref} data-color={skill.color} style={{ transitionDelay: `${index * 0.1}s` }}>
       <div className="skill-icon">{skill.icon}</div>
       <h3>{skill.titulo}</h3>
-      <div className="skill-bars">
+      <div className="skill-tags">
         {skill.items.map((item, i) => (
-          <div className="skill-bar-item" key={i}>
-            <div className="skill-bar-header">
-              <span className="skill-bar-name">{item.name}</span>
-            </div>
-            <div className="skill-bar-track">
-              <div className="skill-bar-fill" data-width={item.level} style={{ width: 0 }} />
-            </div>
-          </div>
+          <span key={i}>{item.name}</span>
         ))}
       </div>
     </div>

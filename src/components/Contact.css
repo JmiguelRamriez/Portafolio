@@ -49,8 +49,8 @@
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: rgba(167, 139, 250, 0.08);
-  border: 1px solid rgba(167, 139, 250, 0.2);
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -187,8 +187,8 @@ a.contact-info-value:hover {
 .form-group input:focus,
 .form-group textarea:focus {
   border-color: var(--accent);
-  background: rgba(167, 139, 250, 0.04);
-  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.1);
+  background: rgba(139, 92, 246, 0.04);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
 }
 
 .btn-loading {

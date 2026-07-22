@@ -58,7 +58,7 @@ function ExperienceItem({ item, index }) {
 
   return (
     <div className={`exp-item ${item.type} reveal-up`} ref={ref} style={{ transitionDelay: `${index * 0.1}s` }}>
-      <div className="exp-dot" />
+      <div className="exp-pad" />
       <div className="exp-card">
         <div className="exp-header">
           {item.logo && (

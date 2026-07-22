@@ -3,47 +3,32 @@
 }
 
 .exp-timeline {
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.exp-timeline::before {
-  content: '';
-  position: absolute;
-  left: 16px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(180deg, rgba(167, 139, 250, 0.3), rgba(167, 139, 250, 0.05));
-}
-
 .exp-item {
   position: relative;
-  padding-left: 48px;
+  padding-left: 44px;
 }
 
-.exp-dot {
+.exp-pad {
   position: absolute;
-  left: 10px;
-  top: 6px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 2px solid var(--accent);
-  background: var(--bg);
-  z-index: 1;
+  left: 0;
+  top: 12px;
+  width: 28px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--accent);
 }
 
-.exp-item.education .exp-dot {
-  border-color: #818cf8;
-  box-shadow: 0 0 8px rgba(129, 140, 248, 0.3);
+.exp-item.education .exp-pad {
+  background: #818cf8;
 }
 
-.exp-item.work .exp-dot {
-  border-color: var(--accent);
-  box-shadow: 0 0 8px rgba(167, 139, 250, 0.3);
+.exp-item.work .exp-pad {
+  background: var(--accent);
 }
 
 .exp-card {
@@ -55,8 +40,8 @@
 }
 
 .exp-card:hover {
-  border-color: rgba(167, 139, 250, 0.3);
-  box-shadow: 0 8px 30px rgba(167, 139, 250, 0.08);
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.08);
 }
 
 .exp-header {

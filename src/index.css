@@ -1,13 +1,11 @@
 :root {
-  --bg: #0d1117;
-  --surface: #161b22;
-  --accent: #a78bfa;
-  --text: #e6edf3;
-  --text-secondary: #8b949e;
-  --border: #21262d;
-
-  --gradient-primary: linear-gradient(135deg, #a78bfa, #7c3aed);
-  --gradient-text: linear-gradient(135deg, #a78bfa, #c084fc);
+  --bg: #0a0a0f;
+  --surface: #14141c;
+  --accent: #8b5cf6;
+  --accent-technical: #00d9a3;
+  --text: #f0f0f3;
+  --text-secondary: #8a8a94;
+  --border: #26262f;
 
   --sans: 'Inter', system-ui, sans-serif;
   --heading: 'Space Grotesk', system-ui, sans-serif;
@@ -34,7 +32,7 @@
 
 body {
   margin: 0;
-  background: #050d1a;
+  background: var(--bg);
   cursor: none;
 }
 
@@ -87,10 +85,7 @@ code {
 }
 
 .gradient-text {
-  background: var(--gradient-text);
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
+  color: var(--accent);
 }
 
 .btn {
@@ -110,14 +105,14 @@ code {
 }
 
 .btn-primary {
-  background: var(--gradient-primary);
+  background: var(--accent);
   color: #fff;
-  box-shadow: 0 0 30px rgba(167, 139, 250, 0.3);
 }
 
 .btn-primary:hover {
+  background: var(--accent);
+  filter: brightness(1.15);
   transform: translateY(-2px);
-  box-shadow: 0 0 50px rgba(167, 139, 250, 0.5);
 }
 
 .btn-outline {
@@ -129,7 +124,7 @@ code {
 .btn-outline:hover {
   border-color: var(--accent);
   color: var(--accent);
-  background: rgba(167, 139, 250, 0.08);
+  background: rgba(139, 92, 246, 0.08);
   transform: translateY(-2px);
 }
 
@@ -143,8 +138,8 @@ code {
   gap: 0.5rem;
   padding: 0.35rem 0.9rem;
   border-radius: 100px;
-  border: 1px solid rgba(167, 139, 250, 0.2);
-  background: rgba(167, 139, 250, 0.06);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  background: rgba(139, 92, 246, 0.06);
 }
 
 .tag-dot {
