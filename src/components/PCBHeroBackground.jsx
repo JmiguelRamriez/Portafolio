@@ -27,7 +27,7 @@ function route(x1, y1, x2, y2, bends = 3) {
       pts.push([a, y1], [a, y1 + dy * 0.3], [c, y1 + dy * 0.3], [c, y1 + dy * 0.6], [d, y1 + dy * 0.6], [d, y2])
     } else {
       const a = y1 + dy * 0.2, c = y1 + dy * 0.5, d = y1 + dy * 0.8
-      pts.push([x1, a], [x1 + dx * 0.3, a], [x1 + dx * 0.3, b], [x1 + dx * 0.6, b], [x1 + dx * 0.6, d], [x2, d])
+      pts.push([x1, a], [x1 + dx * 0.3, a], [x1 + dx * 0.3, y1 + dy * 0.5], [x1 + dx * 0.6, y1 + dy * 0.5], [x1 + dx * 0.6, d], [x2, d])
     }
   }
   pts.push([x2, y2])
@@ -35,7 +35,7 @@ function route(x1, y1, x2, y2, bends = 3) {
 }
 
 function toPath(pts) {
-  return 'M ' + pts.map(p => `${p[0].toFixed(1)} ${p[1].toFixed(1)}`).join(' L ')
+  return 'M ' + pts.map(p => `${(p[0] || 0).toFixed(1)} ${(p[1] || 0).toFixed(1)}`).join(' L ')
 }
 
 // ─── SVG Building Blocks ───
