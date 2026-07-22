@@ -141,6 +141,21 @@
   flex: 1;
 }
 
+.project-badge {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  display: inline-block;
+  width: fit-content;
+  margin-bottom: 0.4rem;
+}
+
 .project-card-body h3 {
   font-family: var(--heading);
   font-size: 1rem;

@@ -105,6 +105,7 @@ function ProjectCard({ project, index, onSelect }) {
         </div>
       </div>
       <div className="project-card-body">
+        {project.badge && <span className="project-badge">{project.badge}</span>}
         <h3>{project.titulo}</h3>
         <p>{project.brief || project.descripcion}</p>
         <div className="project-card-tags">
@@ -173,6 +174,7 @@ function ProjectModal({ project, onClose }) {
             )}
           </div>
           <div className="modal-info">
+            {project.badge && <span className="project-badge">{project.badge}</span>}
             <div className="modal-tags">
               {project.stack.map((tech, i) => (
                 <span key={i}>{tech}</span>
