@@ -17,8 +17,7 @@ function Hero() {
         </h1>
 
         <p>
-          Passionate about embedded systems, PCB design, and building
-          technology that bridges hardware and software.
+          Building intelligent systems at the intersection of AI, Robotics and Embedded Systems.
         </p>
 
         <div className="hero-actions">

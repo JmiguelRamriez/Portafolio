@@ -114,7 +114,6 @@ function SkillCard({ skill, index }) {
           <div className="skill-bar-item" key={i}>
             <div className="skill-bar-header">
               <span className="skill-bar-name">{item.name}</span>
-              <span className="skill-bar-level">{item.level}%</span>
             </div>
             <div className="skill-bar-track">
               <div className="skill-bar-fill" data-width={item.level} style={{ width: 0 }} />
