@@ -11,13 +11,13 @@ const skillsData = [
       </svg>
     ),
     items: [
-      { name: 'KiCad', level: 80 },
-      { name: 'ESP32', level: 90 },
-      { name: 'Arduino', level: 98 },
-      { name: 'FPGA', level: 70 },
-      { name: 'Raspberry Pi', level: 67 },
-      { name: 'Allwinner V3s', level: 59 },
-      { name: 'Electronic Design', level: 78 },
+      { name: 'KiCad' },
+      { name: 'ESP32' },
+      { name: 'Arduino' },
+      { name: 'FPGA' },
+      { name: 'Raspberry Pi' },
+      { name: 'Allwinner V3s' },
+      { name: 'Electronic Design' },
     ],
   },
   {
@@ -30,13 +30,13 @@ const skillsData = [
       </svg>
     ),
     items: [
-      { name: 'C++', level: 56 },
-      { name: 'Python', level: 75 },
-      { name: 'Rust', level: 40 },
-      { name: 'MicroPython', level: 93 },
-      { name: 'Embedded Linux', level: 90 },
-      { name: 'Firmware', level: 90 },
-      { name: 'MQTT', level: 80 },
+      { name: 'C++' },
+      { name: 'Python' },
+      { name: 'Rust' },
+      { name: 'MicroPython' },
+      { name: 'Embedded Linux' },
+      { name: 'Firmware' },
+      { name: 'MQTT' },
     ],
   },
   {
@@ -50,15 +50,15 @@ const skillsData = [
       </svg>
     ),
     items: [
-      { name: 'React', level: 74 },
-      { name: 'Flask', level: 69 },
-      { name: 'Axum', level: 60 },
-      { name: 'Node.js', level: 76 },
-      { name: 'Tkinter', level: 67 },
-      { name: 'REST APIs', level: 80 },
-      { name: 'Git', level: 95 },
-      { name: 'SQL', level: 80 },
-      { name: 'NoSQL', level: 67 },
+      { name: 'React' },
+      { name: 'Flask' },
+      { name: 'Axum' },
+      { name: 'Node.js' },
+      { name: 'Tkinter' },
+      { name: 'REST APIs' },
+      { name: 'Git' },
+      { name: 'SQL' },
+      { name: 'NoSQL' },
     ],
   },
   {
@@ -71,10 +71,10 @@ const skillsData = [
       </svg>
     ),
     items: [
-      { name: 'Linux', level: 80 },
-      { name: 'Docker', level: 69 },
-      { name: 'Problem Solving', level: 100 },
-      { name: 'Teamwork', level: 100 },
+      { name: 'Linux' },
+      { name: 'Docker' },
+      { name: 'Problem Solving' },
+      { name: 'Teamwork' },
     ],
   },
 ]
