@@ -4,77 +4,77 @@
   overflow: hidden;
   z-index: 0;
   pointer-events: none;
-  background: var(--bg);
+  background: var(--bg); /* Board base color */
 }
 
 .pcb-bg svg {
   width: 100%;
   height: 100%;
-  opacity: 0.7;
+  opacity: 1; /* Full opacity to show details */
+  filter: brightness(0.9) contrast(1.1); /* Subtle adjustment for realism */
 }
 
 /* ─── Grid ─── */
-
+/* Not explicitly visible in reference image, but subtle grid is good for PCB feel */
 .pcb-grid-dot {
-  fill: rgba(255, 255, 255, 0.035);
+  fill: rgba(255, 255, 255, 0.015); /* Very faint grid */
 }
 
 .pcb-grid-dot-large {
-  fill: rgba(255, 255, 255, 0.06);
+  fill: rgba(255, 255, 255, 0.025); /* Very faint large grid */
 }
 
 /* ─── Board outline ─── */
-
 .pcb-board {
   fill: none;
   stroke: var(--border);
-  stroke-width: 3;
-  opacity: 0.5;
+  stroke-width: 1.5;
+  opacity: 0.6;
 }
 
-/* ─── Copper pour (ground plane) ─── */
-
+/* ─── Copper Pour (Ground Plane) ─── */
 .copper-pour-bg {
-  fill: var(--surface);
+  fill: var(--surface); /* Darker shade for copper pour base */
   opacity: 0.5;
 }
 
 .copper-pour-hatch {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.02);
+  stroke: rgba(255, 255, 255, 0.01);
   stroke-width: 0.5;
 }
 
 .copper-keepout {
-  fill: var(--bg);
+  fill: var(--bg); /* Cuts out areas from copper pour */
+  stroke: transparent; /* No visible border for cutouts */
 }
 
 /* ─── Traces ─── */
-
 .trace {
   fill: none;
+  stroke: var(--accent); /* Primary trace color: purple */
+  stroke-width: 1.5; /* Default trace width */
   stroke-linejoin: round;
   stroke-linecap: round;
 }
 
-.trace-signal {
-  stroke: var(--border);
-}
-
-.trace-signal:hover {
-  stroke: var(--accent-technical);
-}
-
 .trace-pwr {
-  stroke: rgba(139, 92, 246, 0.2);
+  stroke-width: 2.5; /* Wider for power traces */
+  stroke: var(--accent); /* Keep accent purple for power */
+}
+
+.trace-signal {
+  stroke: var(--accent); /* Regular signal traces */
+  stroke-width: 1.2;
 }
 
 .trace-pulse {
-  stroke: var(--accent);
+  stroke: var(--accent); /* Animated traces in accent purple */
+  stroke-width: 1.8;
   stroke-dasharray: 8 92;
   stroke-dashoffset: 100;
   animation: trace-flow 4s linear infinite;
-  filter: drop-shadow(0 0 4px var(--accent));
+  filter: drop-shadow(0 0 3px var(--accent));
 }
 
 @keyframes trace-flow {
@@ -82,244 +82,155 @@
 }
 
 /* ─── Vias (annular rings) ─── */
-
 .via-ring {
-  fill: rgba(91, 141, 238, 0.6);
-  stroke: rgba(91, 141, 238, 0.3);
-  stroke-width: 0.5;
+  fill: var(--accent-technical); /* Cyan blue for the ring */
+  stroke: none;
+  opacity: 0.8;
 }
 
 .via-hole {
-  fill: var(--bg);
+  fill: var(--bg); /* Dark center hole */
 }
 
-/* ─── Pads ─── */
-
+/* ─── Pads (THT & SMD) ─── */
 .pad-tht-outer {
-  fill: rgba(91, 141, 238, 0.5);
-  stroke: rgba(91, 141, 238, 0.25);
+  fill: var(--accent-technical); /* Cyan blue for THT pad ring */
+  stroke: var(--accent-technical); /* Subtle stroke */
   stroke-width: 0.5;
+  opacity: 0.8;
 }
 
 .pad-tht-hole {
-  fill: var(--bg);
+  fill: var(--bg); /* Dark hole */
 }
 
 .pad-smd {
-  fill: rgba(91, 141, 238, 0.35);
-  stroke: rgba(91, 141, 238, 0.2);
+  fill: var(--accent-technical); /* Cyan blue for SMD pads */
+  stroke: var(--accent-technical); /* Subtle stroke */
   stroke-width: 0.5;
+  opacity: 0.8;
 }
 
 /* ─── Component bodies ─── */
-
 .component-shadow {
-  fill: rgba(0, 0, 0, 0.25);
+  fill: rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 
 .component-body {
-  fill: rgba(255, 255, 255, 0.02);
+  fill: var(--surface); /* Component body color */
   stroke: var(--border);
-  stroke-width: 1.5;
+  stroke-width: 1.2;
 }
 
-.component-body-highlight {
-  fill: rgba(255, 255, 255, 0.03);
-  stroke: var(--accent);
+.qfp-body-main {
+  fill: var(--surface); /* Main IC body */
+  stroke: var(--accent); /* Accent border for main IC */
   stroke-width: 1.5;
 }
 
 .pin {
   stroke: var(--border);
-  stroke-width: 1.2;
+  stroke-width: 1;
 }
 
 .pin-mark {
-  fill: rgba(255, 255, 255, 0.5);
+  fill: var(--text); /* White pin 1 mark */
 }
 
 /* ─── Silkscreen ─── */
-
 .silkscreen-outline {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.15);
-  stroke-width: 0.8;
-  stroke-dasharray: 4 3;
+  stroke: var(--text); /* White for outlines */
+  stroke-width: 0.6;
+  opacity: 0.25;
+  stroke-dasharray: 2 1; /* Dashed outline */
 }
 
 .silkscreen {
-  fill: rgba(255, 255, 255, 0.8);
+  fill: var(--text); /* White for text */
   font-family: 'JetBrains Mono', 'Consolas', monospace;
   font-size: 11px;
   text-anchor: middle;
   dominant-baseline: central;
   pointer-events: none;
+  opacity: 0.85;
 }
 
 .silkscreen-sm {
-  fill: rgba(255, 255, 255, 0.65);
+  fill: var(--text); /* White for small text */
   font-family: 'JetBrains Mono', 'Consolas', monospace;
-  font-size: 9px;
+  font-size: 8px;
   text-anchor: middle;
   dominant-baseline: central;
   pointer-events: none;
+  opacity: 0.7;
 }
 
-/* ─── Special components ─── */
-
-.qfp-body {
-  fill: rgba(255, 255, 255, 0.025);
+/* ─── SMD Passives ─── */
+.smd-resistor-body {
+  fill: var(--surface); /* Resistor body color */
   stroke: var(--border);
-  stroke-width: 1.5;
+  stroke-width: 0.8;
 }
-
-.qfp-body-main {
-  fill: rgba(139, 92, 246, 0.05);
-  stroke: var(--accent);
-  stroke-width: 1.8;
-}
-
-.qfp-pin {
-  stroke: var(--border);
-  stroke-width: 1.2;
-}
-
-.soic-body {
-  fill: rgba(255, 255, 255, 0.025);
-  stroke: var(--border);
-  stroke-width: 1.5;
-}
-
-.soic-pin {
-  stroke: var(--border);
-  stroke-width: 1.2;
-}
-
-.sot-body {
-  fill: rgba(255, 255, 255, 0.025);
-  stroke: var(--border);
-  stroke-width: 1.5;
-}
-
-.sot-pin {
-  stroke: var(--border);
-  stroke-width: 1.5;
-}
-
-.crystal-body {
-  fill: rgba(255, 255, 255, 0.03);
-  stroke: var(--border);
-  stroke-width: 1.5;
-}
-
-.crystal-pin {
-  stroke: var(--border);
-  stroke-width: 1.2;
-}
-
-.usbc-body {
-  fill: rgba(255, 255, 255, 0.02);
-  stroke: var(--border);
-  stroke-width: 1.5;
-}
-
-.usbc-inner {
-  fill: none;
-  stroke: var(--border);
-  stroke-width: 1;
-  stroke-dasharray: 3 2;
-}
-
-.header-body {
-  fill: rgba(0, 0, 0, 0.35);
-  stroke: var(--border);
-  stroke-width: 1.5;
-}
-
-.tactile-body {
-  fill: rgba(255, 255, 255, 0.02);
-  stroke: var(--border);
-  stroke-width: 1.5;
-}
-
-.tactile-btn {
-  fill: rgba(255, 255, 255, 0.03);
-  stroke: var(--border);
-  stroke-width: 1;
-}
-
-/* ─── SMD passives ─── */
-
-.smd-resistor {
-  fill: rgba(255, 255, 255, 0.02);
-  stroke: var(--border);
-  stroke-width: 1;
-}
-
 .smd-resistor-end {
-  fill: rgba(91, 141, 238, 0.3);
+  fill: var(--accent-technical); /* Cyan ends */
 }
 
-.smd-cap {
-  fill: rgba(255, 255, 255, 0.03);
+.smd-cap-body {
+  fill: var(--surface); /* Capacitor body color */
   stroke: var(--border);
-  stroke-width: 1;
-}
-
-/* ─── LEDs ─── */
-
-.led-pwr {
-  fill: #22c55e;
-  opacity: 0.8;
-}
-
-.led-pwr-inner {
-  fill: rgba(255, 255, 255, 0.15);
-}
-
-.led-d13 {
-  fill: #ef4444;
-  opacity: 0.8;
-}
-
-.led-d13-inner {
-  fill: rgba(255, 255, 255, 0.15);
-}
-
-.led-leg {
-  stroke: var(--border);
-  stroke-width: 1.2;
-}
-
-/* ─── Mounting holes ─── */
-
-.mount-hole-outer {
-  fill: rgba(91, 141, 238, 0.4);
-  stroke: rgba(91, 141, 238, 0.2);
   stroke-width: 0.8;
 }
 
+/* ─── LEDs ─── */
+.led-pwr-fill {
+  fill: #22c55e; /* Green for power LED */
+  opacity: 0.8;
+}
+.led-pwr-inner {
+  fill: rgba(255, 255, 255, 0.2); /* Inner glow */
+}
+
+.led-d13-fill {
+  fill: #ef4444; /* Red for D13 LED */
+  opacity: 0.8;
+}
+.led-d13-inner {
+  fill: rgba(255, 255, 255, 0.2); /* Inner glow */
+}
+.led-outline {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 0.8;
+}
+
+/* ─── Mounting holes ─── */
+.mount-hole-outer {
+  fill: var(--accent-technical); /* Cyan blue for outer ring */
+  stroke: var(--accent-technical); /* Subtle stroke */
+  stroke-width: 0.5;
+  opacity: 0.7;
+}
+
 .mount-hole-inner {
-  fill: var(--bg);
+  fill: var(--bg); /* Dark hole */
 }
 
 /* ─── Animated signals ─── */
-
 .signal-dot {
-  fill: var(--accent);
-  filter: drop-shadow(0 0 8px var(--accent));
+  fill: var(--accent); /* Accent purple for animated dots */
+  filter: drop-shadow(0 0 6px var(--accent));
   animation: signal-move 4s linear infinite;
 }
 
 @keyframes signal-move {
-  0% { opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { opacity: 0; }
+  0% { opacity: 0; transform: scale(0.5); }
+  10% { opacity: 1; transform: scale(1); }
+  90% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.5); }
 }
 
 /* ─── Vignette ─── */
-
 .pcb-vignette {
   position: absolute;
   inset: 0;
