@@ -124,9 +124,9 @@
   font-size: 0.72rem;
   padding: 0.25rem 0.65rem;
   border-radius: 999px;
-  background: rgba(0, 217, 163, 0.07);
+  background: rgba(91, 141, 238, 0.07);
   color: var(--accent-technical);
-  border: 1px solid rgba(0, 217, 163, 0.15);
+  border: 1px solid rgba(91, 141, 238, 0.15);
 }
 
 @media (max-width: 1024px) {

@@ -62,7 +62,7 @@
 .project-card:hover {
   border-color: var(--accent-technical);
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 217, 163, 0.1);
+  box-shadow: 0 12px 40px rgba(91, 141, 238, 0.1);
 }
 
 .project-card-image {
@@ -189,9 +189,9 @@
   font-size: 0.68rem;
   padding: 0.2rem 0.5rem;
   border-radius: 999px;
-  background: rgba(0, 217, 163, 0.07);
+  background: rgba(91, 141, 238, 0.07);
   color: var(--accent-technical);
-  border: 1px solid rgba(0, 217, 163, 0.15);
+  border: 1px solid rgba(91, 141, 238, 0.15);
 }
 
 .project-card-tags .tag-more {
@@ -397,9 +397,9 @@
   font-size: 0.68rem;
   padding: 0.2rem 0.5rem;
   border-radius: 999px;
-  background: rgba(0, 217, 163, 0.07);
+  background: rgba(91, 141, 238, 0.07);
   color: var(--accent-technical);
-  border: 1px solid rgba(0, 217, 163, 0.15);
+  border: 1px solid rgba(91, 141, 238, 0.15);
 }
 
 .modal-description {
