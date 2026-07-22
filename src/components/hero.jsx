@@ -1,12 +1,6 @@
 import '../App.css'
 import Typewriter from './Typewriter'
 
-const skills = [
-  'KiCad', 'PCB Design', 'C++', 'Python', 'Rust', 'React',
-  'ESP32', 'Flask', 'Axum', 'MQTT', 'Embedded Linux', 'MicroPython',
-  'IoT', 'Electronic Design', 'Firmware', 'Git',
-]
-
 function Hero() {
   return (
     <section id="hero">
@@ -14,7 +8,7 @@ function Hero() {
       <div className="hero-content">
         <span className="section-tag" data-cursor="logo">
           <span className="tag-dot" />
-          HI, I'M JOSE MIGUEL
+          $ whoami  →  josemiguel
         </span>
 
         <h1>
@@ -42,17 +36,6 @@ function Hero() {
           <a href="https://github.com/JmiguelRamriez" target="_blank" rel="noopener noreferrer" data-cursor="link">GitHub</a>
           <a href="https://www.linkedin.com/in/jos%C3%A9-miguel-ramirez-gutierrez-a592a4351/" target="_blank" rel="noopener noreferrer" data-cursor="link">LinkedIn</a>
           <a href="mailto:2005josemiguelramirez@gmail.com" data-cursor="link">Email</a>
-        </div>
-      </div>
-
-      <div className="hero-ticker" aria-hidden="true">
-        <div className="ticker-track">
-          {[...skills, ...skills].map((s, i) => (
-            <span key={i}>
-              {s}
-              <span className="ticker-sep">✦</span>
-            </span>
-          ))}
         </div>
       </div>
 

@@ -92,7 +92,7 @@ function Experience() {
     <section id="experience">
       <div className="container">
         <div className="section-header reveal-up">
-          <span className="section-tag">// EXPERIENCE</span>
+          <span className="section-tag">$ cat experience</span>
           <h2>Education &amp; Work</h2>
         </div>
         <div className="exp-timeline">

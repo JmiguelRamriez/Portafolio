@@ -131,7 +131,7 @@ function Skills() {
     <section id="skills">
       <div className="container">
         <div className="section-header reveal-up">
-          <span className="section-tag">// SKILLS</span>
+          <span className="section-tag">$ cat skills</span>
           <h2>Tech Stack &amp; Tools</h2>
         </div>
         <div className="skills-grid">

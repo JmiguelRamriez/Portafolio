@@ -21,6 +21,20 @@ function App() {
       <div className="app-content">
         <Navbar />
         <Hero />
+        <div className="ticker-bar" aria-hidden="true">
+          <div className="ticker-track">
+            {[
+              'KiCad', 'PCB Design', 'C++', 'Python', 'Rust', 'React',
+              'ESP32', 'Flask', 'Axum', 'MQTT', 'Embedded Linux', 'MicroPython',
+              'IoT', 'Electronic Design', 'Firmware', 'Git',
+            ].map((s, i) => (
+              <span key={i}>
+                {s}
+                <span className="ticker-sep">✦</span>
+              </span>
+            ))}
+          </div>
+        </div>
         <Projects />
         <Skills />
         <Experience />

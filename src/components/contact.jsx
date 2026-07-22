@@ -30,7 +30,7 @@ function Contact() {
         <div className="contact-header reveal-up">
           <span className="section-tag">
             <span className="tag-dot" />
-            CONTACT
+            $ ./connect
           </span>
           <h2>
             Let&apos;s <span className="gradient-text">Connect</span>
