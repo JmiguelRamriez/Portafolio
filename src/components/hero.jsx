@@ -1,11 +1,11 @@
 import '../App.css'
 import Typewriter from './Typewriter'
-import PCBHeroBackground from './PCBHeroBackground'
+import CircuitBg from './CircuitBg'
 
 function Hero() {
   return (
     <section id="hero">
-      <PCBHeroBackground />
+      <CircuitBg />
       <div className="hero-content">
         <span className="section-tag" data-cursor="logo">
           <span className="tag-dot" />
