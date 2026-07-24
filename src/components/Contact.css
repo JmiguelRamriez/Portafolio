@@ -63,7 +63,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #475569;
+  color: #94a3b8;
   margin-bottom: 0.2rem;
 }
 
@@ -181,7 +181,7 @@ a.contact-info-value:hover {
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: #475569;
+  color: #64748b;
 }
 
 .form-group input:focus,

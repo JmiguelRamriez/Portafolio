@@ -57,7 +57,7 @@ function ExperienceItem({ item, index }) {
   }, [])
 
   return (
-    <div className={`exp-item ${item.type} reveal-up`} ref={ref} style={{ transitionDelay: `${index * 0.1}s` }}>
+    <div className={`exp-item ${item.type} fade-in`} ref={ref} style={{ transitionDelay: `${index * 0.1}s` }}>
       <div className="exp-pad" />
       <div className="exp-card">
         <div className="exp-header">
@@ -91,7 +91,7 @@ function Experience() {
   return (
     <section id="experience">
       <div className="container">
-        <div className="section-header reveal-up">
+        <div className="section-header fade-in">
           <span className="section-tag">$ cat experience</span>
           <h2>Education &amp; Work</h2>
         </div>

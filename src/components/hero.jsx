@@ -16,10 +16,15 @@ function Hero() {
               $ whoami  →  josemiguel
             </span>
             <h1>Jos&eacute; Miguel Ram&iacute;rez</h1>
-            <p className="hero-subtitle">Robotics &amp; Embedded Systems Student</p>
-            <p className="hero-detail">from Chile &middot; Tec de Monterrey</p>
+            <p className="hero-subtitle">Robotics &amp; Intelligent Systems Engineering</p>
+            <p className="hero-detail">@ Tec de Monterrey &middot; from Chile</p>
           </div>
         </div>
+
+        <p className="hero-bio">
+          Passionate about embedded systems and the automotive industry &mdash;
+          I believe the future of mobility is being written in firmware.
+        </p>
 
         <div className="hero-actions">
           <a href="#projects" className="btn btn-primary" data-cursor="cta">

@@ -75,7 +75,7 @@ function ProjectCard({ project, index, onSelect }) {
 
   return (
     <div
-      className="project-card reveal-up"
+      className="project-card fade-in"
       ref={cardRef}
       style={{ transitionDelay: `${index * 0.08}s` }}
       data-cursor="link"
@@ -229,7 +229,7 @@ function Projects() {
   return (
     <section id="projects">
       <div className="container">
-        <div className="section-header reveal-up">
+        <div className="section-header fade-in">
           <span className="section-tag">$ ls projects/</span>
           <h2>Featured Work</h2>
         </div>

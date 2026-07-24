@@ -88,6 +88,19 @@ code {
   color: var(--accent);
 }
 
+.accent-text {
+  color: var(--accent);
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+}
+
 .btn {
   font-family: var(--sans);
   cursor: pointer;

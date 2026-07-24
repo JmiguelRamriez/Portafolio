@@ -27,13 +27,13 @@ function Contact() {
   return (
     <section id="contact">
       <div className="container">
-        <div className="contact-header reveal-up">
+        <div className="contact-header fade-in">
           <span className="section-tag">
             <span className="tag-dot" />
             $ ./connect
           </span>
           <h2>
-            Let&apos;s <span className="gradient-text">Connect</span>
+            Let&apos;s <span className="accent-text">Connect</span>
           </h2>
           <p className="contact-subtitle">
             Have a project in mind or just want to say hi? Feel free to reach out!

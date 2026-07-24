@@ -43,7 +43,7 @@ footer .container {
 }
 
 .footer-copy {
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 0.78rem;
   color: var(--text-secondary);
   opacity: 0.6;
