@@ -2,6 +2,11 @@
   padding: 5rem 0;
 }
 
+#skills .section-header {
+  max-width: 680px;
+  margin: 0 auto 3rem;
+}
+
 .skills-flow {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

@@ -1,10 +1,11 @@
-import { useMemo } from 'react'
+import { useMemo, useState, useCallback, useRef } from 'react'
 import './CircuitBg.css'
 
 const COLS = 30
 const ROWS = 20
 const CELL = 40
 const CHAMFER = 0.5
+const PROX_RADIUS = 150
 
 function randomEdgePoint() {
   const edge = Math.floor(Math.random() * 4)
@@ -54,62 +55,155 @@ function toChamferedPath(points) {
   return d
 }
 
-function Chip({ x, y, w, h, pinsX, pinsY }) {
+function computeBounds(points) {
+  const xs = points.map(p => p[0] * CELL)
+  const ys = points.map(p => p[1] * CELL)
+  const minX = Math.min(...xs)
+  const maxX = Math.max(...xs)
+  const minY = Math.min(...ys)
+  const maxY = Math.max(...ys)
+  return { cx: (minX + maxX) / 2, cy: (minY + maxY) / 2, minX, maxX, minY, maxY }
+}
+
+function pointToRectDist(mx, my, b) {
+  const closestX = Math.max(b.minX, Math.min(mx, b.maxX))
+  const closestY = Math.max(b.minY, Math.min(my, b.maxY))
+  const dx = mx - closestX
+  const dy = my - closestY
+  return Math.sqrt(dx * dx + dy * dy)
+}
+
+const chipDefs = [
+  { x: 520, y: 310, w: 160, h: 140, label: 'CPU' },
+  { x: 880, y: 130, w: 90, h: 70, label: 'MEM' },
+  { x: 140, y: 550, w: 80, h: 60, label: 'IO' },
+  { x: 60, y: 200, w: 70, h: 50, label: 'PWR' },
+  { x: 1040, y: 500, w: 100, h: 80, label: 'DSP' },
+]
+
+function Chip({ x, y, w, h, label, intensity }) {
+  const pinsX = Math.round(w / 16)
+  const pinsY = Math.round(h / 16)
   const gapX = w / (pinsX + 1)
   const gapY = h / (pinsY + 1)
+  const active = intensity > 0.2
   return (
-    <g className="chip">
-      <rect x={x} y={y} width={w} height={h} rx="2" />
+    <g className={`chip${active ? ' active' : ''}`}>
+      <rect x={x} y={y} width={w} height={h} rx="3" />
       {Array.from({ length: pinsX }).map((_, i) => (
-        <g key={`x${i}`}>
-          <line x1={x + gapX * (i + 1)} y1={y} x2={x + gapX * (i + 1)} y2={y - 8} />
-          <line x1={x + gapX * (i + 1)} y1={y + h} x2={x + gapX * (i + 1)} y2={y + h + 8} />
+        <g key={`px${i}`}>
+          <circle cx={x + gapX * (i + 1)} cy={y} r="2.5" className="chip-pad" />
+          <circle cx={x + gapX * (i + 1)} cy={y + h} r="2.5" className="chip-pad" />
         </g>
       ))}
       {Array.from({ length: pinsY }).map((_, i) => (
-        <g key={`y${i}`}>
-          <line x1={x} y1={y + gapY * (i + 1)} x2={x - 8} y2={y + gapY * (i + 1)} />
-          <line x1={x + w} y1={y + gapY * (i + 1)} x2={x + w + 8} y2={y + gapY * (i + 1)} />
+        <g key={`py${i}`}>
+          <circle cx={x} cy={y + gapY * (i + 1)} r="2.5" className="chip-pad" />
+          <circle cx={x + w} cy={y + gapY * (i + 1)} r="2.5" className="chip-pad" />
         </g>
       ))}
+      <text x={x + w / 2} y={y + h / 2 + 1} textAnchor="middle" dominantBaseline="middle" className="chip-label">
+        {label}
+      </text>
     </g>
   )
 }
 
 function CircuitBg() {
+  const [mousePos, setMousePos] = useState(null)
+  const svgRef = useRef(null)
+  const rafRef = useRef(null)
+
   const traces = useMemo(() => Array.from({ length: 70 }, () => generateTrace()), [])
+  const traceBounds = useMemo(() => traces.map(computeBounds), [traces])
+  const chips = useMemo(() => chipDefs.map(c => ({
+    ...c,
+    bounds: { minX: c.x, maxX: c.x + c.w, minY: c.y, maxY: c.y + c.h, cx: c.x + c.w / 2, cy: c.y + c.h / 2 },
+  })), [])
+
+  const handleMouseMove = useCallback((e) => {
+    if (rafRef.current) return
+    rafRef.current = requestAnimationFrame(() => {
+      rafRef.current = null
+      const svg = svgRef.current
+      if (!svg) return
+      const rect = svg.getBoundingClientRect()
+      setMousePos({
+        x: ((e.clientX - rect.left) / rect.width) * 1200,
+        y: ((e.clientY - rect.top) / rect.height) * 800,
+      })
+    })
+  }, [])
+
+  const handleMouseLeave = useCallback(() => {
+    setMousePos(null)
+  }, [])
+
+  function getIntensity(b) {
+    if (!mousePos) return 0
+    const dist = pointToRectDist(mousePos.x, mousePos.y, b)
+    if (dist > PROX_RADIUS) return 0
+    return 1 - (dist / PROX_RADIUS)
+  }
 
   return (
     <div className="circuit-bg">
-      <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+      <svg
+        ref={svgRef}
+        viewBox="0 0 1200 800"
+        preserveAspectRatio="xMidYMid slice"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
         <defs>
           <radialGradient id="pour" cx="50%" cy="45%" r="55%">
-            <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.12" />
+            <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.1" />
             <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
           </radialGradient>
         </defs>
 
         <rect x="0" y="0" width="1200" height="800" fill="url(#pour)" />
 
-        {traces.map((points, i) => (
-          <path
-            key={`t${i}`}
-            d={toChamferedPath(points)}
-            pathLength="100"
-            className={i % 3 === 0 ? 'trace pulse' : 'trace'}
-            style={i % 3 === 0 ? { animationDelay: `${(i * 0.4) % 5}s` } : undefined}
-          />
-        ))}
+        {traces.map((points, i) => {
+          const intensity = getIntensity(traceBounds[i])
+          const isPulse = i % 3 === 0
+          return (
+            <path
+              key={`t${i}`}
+              d={toChamferedPath(points)}
+              pathLength="100"
+              className={isPulse ? 'trace pulse' : 'trace'}
+              style={{
+                '--prox': intensity,
+                animationDelay: isPulse ? `${(i * 0.4) % 5}s` : undefined,
+              }}
+            />
+          )
+        })}
 
         {traces.filter((_, i) => i % 4 === 0).flatMap((points, gi) =>
-          points.slice(1, -1).map(([x, y], pi) => (
-            <circle key={`v${gi}-${pi}`} className="via" cx={x * CELL} cy={y * CELL} r="3.5" />
-          ))
+          points.slice(1, -1).map(([x, y], pi) => {
+            const intensity = getIntensity({
+              minX: x * CELL - 5, maxX: x * CELL + 5,
+              minY: y * CELL - 5, maxY: y * CELL + 5,
+              cx: x * CELL, cy: y * CELL,
+            })
+            return (
+              <circle
+                key={`v${gi}-${pi}`}
+                className="via"
+                cx={x * CELL}
+                cy={y * CELL}
+                r="3.5"
+                style={{ '--prox': intensity }}
+              />
+            )
+          })
         )}
 
-        <Chip x={520} y={330} w={160} h={140} pinsX={10} pinsY={8} />
-        <Chip x={880} y={140} w={90} h={70} pinsX={5} pinsY={4} />
-        <Chip x={140} y={560} w={80} h={60} pinsX={4} pinsY={3} />
+        {chips.map(c => (
+          <Chip key={c.label} x={c.x} y={c.y} w={c.w} h={c.h} label={c.label} intensity={getIntensity(c.bounds)} />
+        ))}
       </svg>
       <div className="circuit-vignette" />
     </div>
