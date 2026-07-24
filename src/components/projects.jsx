@@ -40,8 +40,13 @@ function Placeholder({ project }) {
   )
 }
 
+function loc(project, field, lang) {
+  const esField = field + '_es'
+  return lang === 'es' && project[esField] ? project[esField] : project[field]
+}
+
 function ProjectCard({ project, index, onSelect }) {
-  const { t } = useLanguage()
+  const { lang, t } = useLanguage()
   const [imgIndex, setImgIndex] = useState(0)
   const [loaded, setLoaded] = useState(false)
   const intervalRef = useRef(null)
@@ -89,7 +94,7 @@ function ProjectCard({ project, index, onSelect }) {
         {project.imagenes && project.imagenes.length > 0 ? (
           <img
             src={project.imagenes[imgIndex]}
-            alt={project.titulo}
+            alt={loc(project, 'titulo', lang)}
             loading="lazy"
             className={loaded ? 'loaded' : ''}
             onLoad={() => setLoaded(true)}
@@ -107,9 +112,9 @@ function ProjectCard({ project, index, onSelect }) {
         </div>
       </div>
       <div className="project-card-body">
-        {project.badge && <span className="project-badge">{project.badge}</span>}
-        <h3>{project.titulo}</h3>
-        <p>{project.brief || project.descripcion}</p>
+        {project.badge && <span className="project-badge">{loc(project, 'badge', lang)}</span>}
+        <h3>{loc(project, 'titulo', lang)}</h3>
+        <p>{loc(project, 'brief', lang) || loc(project, 'descripcion', lang)}</p>
         <div className="project-card-tags">
           {project.stack.map((tech, i) => (
             <span key={i}>{tech}</span>
@@ -121,7 +126,7 @@ function ProjectCard({ project, index, onSelect }) {
 }
 
 function ProjectModal({ project, onClose }) {
-  const { t } = useLanguage()
+  const { lang, t } = useLanguage()
   const [modalImg, setModalImg] = useState(0)
   const modalIntervalRef = useRef(null)
 
@@ -159,7 +164,7 @@ function ProjectModal({ project, onClose }) {
             <span className="modal-dot yellow" />
             <span className="modal-dot green" />
           </div>
-          <span className="modal-title">{project.titulo}</span>
+          <span className="modal-title">{loc(project, 'titulo', lang)}</span>
           <button className="modal-close" onClick={onClose} data-cursor="link">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
@@ -169,7 +174,7 @@ function ProjectModal({ project, onClose }) {
         <div className="modal-body">
           <div className="modal-image">
             {project.imagenes && project.imagenes.length > 0 ? (
-              <img src={project.imagenes[modalImg]} alt={project.titulo} />
+              <img src={project.imagenes[modalImg]} alt={loc(project, 'titulo', lang)} />
             ) : (
               <div className="modal-placeholder">
                 <Placeholder project={project} />
@@ -177,13 +182,13 @@ function ProjectModal({ project, onClose }) {
             )}
           </div>
           <div className="modal-info">
-            {project.badge && <span className="project-badge">{project.badge}</span>}
+            {project.badge && <span className="project-badge">{loc(project, 'badge', lang)}</span>}
             <div className="modal-tags">
               {project.stack.map((tech, i) => (
                 <span key={i}>{tech}</span>
               ))}
             </div>
-            <p className="modal-description">{project.descripcion}</p>
+            <p className="modal-description">{loc(project, 'descripcion', lang)}</p>
             <div className="modal-actions">
               <a
                 href={project.url}
