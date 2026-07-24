@@ -24,7 +24,7 @@
 }
 
 .exp-item.education .exp-pad {
-  background: #818cf8;
+  background: var(--accent-technical);
 }
 
 .exp-item.work .exp-pad {
@@ -40,8 +40,8 @@
 }
 
 .exp-card:hover {
-  border-color: rgba(139, 92, 246, 0.3);
-  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.08);
+  border-color: rgba(129, 140, 248, 0.25);
+  box-shadow: 0 8px 30px rgba(129, 140, 248, 0.08);
 }
 
 .exp-header {
@@ -83,7 +83,7 @@
 }
 
 .exp-item.education .exp-type {
-  color: #818cf8;
+  color: var(--accent-technical);
 }
 
 .exp-header-text h3 {
@@ -132,7 +132,7 @@
   content: '▸';
   position: absolute;
   left: 0;
-  color: var(--accent);
+  color: var(--accent-technical);
 }
 
 .exp-body p {

@@ -8,9 +8,7 @@ import Experience from './components/experience'
 import Contact from './components/contact'
 import Footer from './components/footer'
 import BackToTop from './components/BackToTop'
-import GradientBg from './components/GradientBg'
 import './components/Cursor.css'
-import './components/MoonStars.css'
 import './App.css'
 
 function App() {
@@ -18,7 +16,6 @@ function App() {
     <LanguageProvider>
       <Cursor />
       <div className="noise" />
-      <GradientBg />
       <div className="app-content">
         <Navbar />
         <Hero />

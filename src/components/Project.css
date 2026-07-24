@@ -21,21 +21,21 @@
 
 .projects-tab:hover {
   color: var(--text);
-  border-color: rgba(139, 92, 246, 0.3);
-  background: rgba(139, 92, 246, 0.06);
+  border-color: rgba(129, 140, 248, 0.3);
+  background: rgba(129, 140, 248, 0.06);
 }
 
 .projects-tab.active {
   color: var(--accent);
-  border-color: rgba(139, 92, 246, 0.4);
-  background: rgba(139, 92, 246, 0.1);
+  border-color: rgba(129, 140, 248, 0.4);
+  background: rgba(129, 140, 248, 0.1);
 }
 
 /* ─── Grid ─── */
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
   animation: fade-in 0.3s ease;
 }
@@ -45,24 +45,37 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ─── Card ─── */
+/* ─── Card (double-bezel technique) ─── */
 
 .project-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
   text-decoration: none;
   color: inherit;
   transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 17px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: -1;
 }
 
 .project-card:hover {
-  border-color: var(--accent-technical);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(91, 141, 238, 0.1);
+  border-color: rgba(129, 140, 248, 0.3);
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 40px rgba(129, 140, 248, 0.08),
+    0 0 0 1px rgba(129, 140, 248, 0.1);
 }
 
 .project-card-image {
@@ -79,7 +92,7 @@
   opacity: 0;
   filter: blur(12px);
   transform: scale(1.08);
-  transition: opacity 0.5s, filter 0.5s, transform 0.5s, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.5s, filter 0.5s, transform 0.5s;
 }
 
 .project-card-image img.loaded {
@@ -116,7 +129,7 @@
   gap: 0.4rem;
   padding: 0.5rem 1.2rem;
   border-radius: 100px;
-  background: rgba(139, 92, 246, 0.2);
+  background: rgba(129, 140, 248, 0.2);
   backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   transform: translateY(8px);
@@ -128,7 +141,7 @@
 }
 
 .project-card-link:hover {
-  background: rgba(139, 92, 246, 0.35);
+  background: rgba(129, 140, 248, 0.35);
 }
 
 /* ─── Card body ─── */
@@ -189,9 +202,9 @@
   font-size: 0.68rem;
   padding: 0.2rem 0.5rem;
   border-radius: 999px;
-  background: rgba(91, 141, 238, 0.07);
+  background: rgba(45, 212, 191, 0.07);
   color: var(--accent-technical);
-  border: 1px solid rgba(91, 141, 238, 0.15);
+  border: 1px solid rgba(45, 212, 191, 0.15);
 }
 
 .project-card-tags .tag-more {
@@ -241,7 +254,7 @@
 }
 
 .project-card:hover .placeholder-icon {
-  color: rgba(139, 92, 246, 0.2);
+  color: rgba(129, 140, 248, 0.2);
 }
 
 /* ─── Modal ─── */
@@ -397,9 +410,9 @@
   font-size: 0.68rem;
   padding: 0.2rem 0.5rem;
   border-radius: 999px;
-  background: rgba(91, 141, 238, 0.07);
+  background: rgba(45, 212, 191, 0.07);
   color: var(--accent-technical);
-  border: 1px solid rgba(91, 141, 238, 0.15);
+  border: 1px solid rgba(45, 212, 191, 0.15);
 }
 
 .modal-description {
@@ -436,7 +449,7 @@
 .modal-doc-btn:hover {
   border-color: var(--accent);
   color: var(--accent);
-  background: rgba(139, 92, 246, 0.08);
+  background: rgba(129, 140, 248, 0.08);
   transform: translateY(-2px);
 }
 
