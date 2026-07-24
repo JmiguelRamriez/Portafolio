@@ -153,7 +153,6 @@ nav.scrolled {
   align-items: center;
   text-align: center;
   position: relative;
-  overflow: hidden;
   padding: 7rem 0 0;
 }
 
@@ -258,6 +257,101 @@ nav.scrolled {
 @keyframes scroll-arrow {
   0%, 100% { opacity: 1; transform: translateX(-50%) translateY(0); }
   50% { opacity: 0.4; transform: translateX(-50%) translateY(6px); }
+}
+
+/* ─── HERO ABOUT ─── */
+
+.hero-about {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 800px;
+  padding: 3rem 2rem 8rem;
+  margin: 0 auto;
+}
+
+.hero-about-card {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  text-align: left;
+}
+
+.hero-about-photo {
+  flex-shrink: 0;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 24px rgba(139, 92, 246, 0.2);
+}
+
+.hero-about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-about-body .section-tag {
+  margin-bottom: 0.75rem;
+}
+
+.hero-about-name {
+  font-family: var(--heading);
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0.5rem 0 0.75rem;
+  color: var(--text);
+}
+
+.hero-about-body p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.hero-about-body p:last-of-type {
+  margin-bottom: 1rem;
+}
+
+.hero-about-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.hero-about-badges .badge {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(91, 141, 238, 0.07);
+  color: var(--accent-technical);
+  border: 1px solid rgba(91, 141, 238, 0.15);
+}
+
+@media (max-width: 768px) {
+  .hero-about-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .hero-about-photo {
+    width: 130px;
+    height: 130px;
+  }
+
+  .hero-about-badges {
+    justify-content: center;
+  }
 }
 
 /* ─── PROJECTS ─── */
