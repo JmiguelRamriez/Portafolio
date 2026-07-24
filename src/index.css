@@ -194,3 +194,13 @@ code {
     cursor: auto;
   }
 }
+
+.btn-primary:active {
+  transform: translateY(-1px) scale(0.97
+.btn-primary:active {
+  transform: translateY(-1px) scale(0.97);
+}
+
+.btn-outline:active {
+  transform: translateY(-1px) scale(0.97);
+}

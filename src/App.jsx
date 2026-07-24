@@ -8,6 +8,7 @@ import Contact from './components/contact'
 import Footer from './components/footer'
 import BackToTop from './components/BackToTop'
 import GradientBg from './components/GradientBg'
+import About from './components/about'
 import './components/Cursor.css'
 import './components/MoonStars.css'
 import './App.css'
@@ -35,6 +36,7 @@ function App() {
             ))}
           </div>
         </div>
+        <About />
         <Projects />
         <Skills />
         <Experience />
