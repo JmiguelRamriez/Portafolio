@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
+import { useLanguage } from '../i18n/LanguageContext'
+import { file } from '../utils'
+import ThemeToggle from './ThemeToggle'
+import LangToggle from './LangToggle'
 
 function Navbar() {
+  const { t } = useLanguage()
   const navRef = useRef(null)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -59,12 +64,14 @@ function Navbar() {
         </a>
 
         <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
-          <li><a href="#hero" className="nav-link" data-cursor="link" onClick={closeMenu}>Home</a></li>
-          <li><a href="#projects" className="nav-link" data-cursor="link" onClick={closeMenu}>Projects</a></li>
-          <li><a href="#skills" className="nav-link" data-cursor="link" onClick={closeMenu}>Skills</a></li>
-          <li><a href="#experience" className="nav-link" data-cursor="link" onClick={closeMenu}>Experience</a></li>
-          <li><a href="/Portafolio/files/Cv_Jose_Miguel_Ramirez_.pdf" download className="nav-link" data-cursor="link" onClick={closeMenu}>CV</a></li>
-          <li><a href="#contact" className="btn btn-primary nav-cta" data-cursor="cta" onClick={closeMenu}>Contact</a></li>
+          <li><a href="#hero" className="nav-link" data-cursor="link" onClick={closeMenu}>{t('nav.home')}</a></li>
+          <li><a href="#projects" className="nav-link" data-cursor="link" onClick={closeMenu}>{t('nav.projects')}</a></li>
+          <li><a href="#skills" className="nav-link" data-cursor="link" onClick={closeMenu}>{t('nav.skills')}</a></li>
+          <li><a href="#experience" className="nav-link" data-cursor="link" onClick={closeMenu}>{t('nav.experience')}</a></li>
+          <li><a href={file('files/Cv_Jose_Miguel_Ramirez_.pdf')} download className="nav-link" data-cursor="link" onClick={closeMenu}>{t('nav.cv')}</a></li>
+          <li><LangToggle /></li>
+          <li><ThemeToggle /></li>
+          <li><a href="#contact" className="btn btn-primary nav-cta" data-cursor="cta" onClick={closeMenu}>{t('nav.contact')}</a></li>
         </ul>
 
         <button

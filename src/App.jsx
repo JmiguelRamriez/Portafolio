@@ -1,3 +1,4 @@
+import { LanguageProvider } from './i18n/LanguageContext'
 import Cursor from './components/Cursor'
 import Navbar from './components/navbar'
 import Hero from './components/hero'
@@ -14,7 +15,7 @@ import './App.css'
 
 function App() {
   return (
-    <div>
+    <LanguageProvider>
       <Cursor />
       <div className="noise" />
       <GradientBg />
@@ -42,7 +43,7 @@ function App() {
         <Footer />
       </div>
       <BackToTop />
-    </div>
+    </LanguageProvider>
   )
 }
 

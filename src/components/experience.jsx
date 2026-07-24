@@ -1,20 +1,22 @@
 import { useRef, useEffect } from 'react'
+import { useLanguage } from '../i18n/LanguageContext'
+import { img } from '../utils'
 import './Experience.css'
 
 const experienceData = [
   {
     type: 'education',
     title: 'B.S. in Robotics and Digital Systems Engineering',
-    institution: 'ITESM — Tecnológico de Monterrey',
-    period: 'Aug 2024 – Expected 2028',
+    institution: 'ITESM \u2014 Tecnol\u00f3gico de Monterrey',
+    period: 'Aug 2024 \u2013 Expected 2028',
     description: 'Developing expertise in embedded firmware for ARM-based microcontrollers, FPGA design (VHDL/Verilog), and real-time control systems for robotic applications. Studying computer vision, sensor fusion, and autonomous navigation algorithms, reinforced by hands-on projects in PCB design, ROS-based control architectures, and IoT system integration with a strong foundation in C/C++, Python, and MATLAB.',
     logo: null,
   },
   {
     type: 'work',
-    title: 'Automated Positioning System — PEPS Validation',
+    title: 'Automated Positioning System \u2014 PEPS Validation',
     institution: 'Valeo Contractor',
-    period: 'Apr 2026 – Jun 2026',
+    period: 'Apr 2026 \u2013 Jun 2026',
     description: [
       'Designed and implemented CoreXY kinematics firmware in C++ with non-blocking stepper control, trapezoidal acceleration profiles, and a serial command protocol for remote operation.',
       'Built an autonomous workspace calibration system using 4 HC-SR04 ultrasonic sensors with a halving-approach algorithm for precise spatial positioning across the designated area.',
@@ -26,7 +28,7 @@ const experienceData = [
     type: 'work',
     title: 'IT Consultant',
     institution: 'BinarySails',
-    period: 'May 2025 – Present',
+    period: 'May 2025 \u2013 Present',
     description: [
       'Collaborated to verify and standardize Microsoft OneDrive functionality, remote sharing, and synchronization across multiple external computers.',
       'Formulated an official instructional curriculum syllabus outlining cloud storage collaboration techniques and synchronization states for workplace environments.',
@@ -38,6 +40,7 @@ const experienceData = [
 ]
 
 function ExperienceItem({ item, index }) {
+  const { t } = useLanguage()
   const ref = useRef(null)
 
   useEffect(() => {
@@ -63,11 +66,11 @@ function ExperienceItem({ item, index }) {
         <div className="exp-header">
           {item.logo && (
             <div className="exp-logo">
-              <img src={item.logo} alt={item.institution} />
+              <img src={img(item.logo)} alt={item.institution} />
             </div>
           )}
           <div className="exp-header-text">
-            <span className="exp-type">{item.type === 'education' ? 'Education' : 'Experience'}</span>
+            <span className="exp-type">{item.type === 'education' ? t('experience.education') : t('experience.experience')}</span>
             <h3>{item.title}</h3>
             <p className="exp-institution">{item.institution}</p>
             <span className="exp-period">{item.period}</span>
@@ -88,12 +91,13 @@ function ExperienceItem({ item, index }) {
 }
 
 function Experience() {
+  const { t } = useLanguage()
   return (
     <section id="experience">
       <div className="container">
         <div className="section-header fade-in">
-          <span className="section-tag">$ cat experience</span>
-          <h2>Education &amp; Work</h2>
+          <span className="section-tag">{t('experience.sectionTag')}</span>
+          <h2>{t('experience.title')}</h2>
         </div>
         <div className="exp-timeline">
           {experienceData.map((item, index) => (
