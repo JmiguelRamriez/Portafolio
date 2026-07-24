@@ -5,13 +5,15 @@
 .skills-flow {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem 2.5rem;
-  align-items: start;
+  gap: 1.5rem 3rem;
+  max-width: 680px;
+  margin: 0 auto;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 720px) {
   .skills-flow {
     grid-template-columns: 1fr;
+    max-width: 100%;
   }
 }
 
@@ -25,11 +27,10 @@
   font-weight: 600;
   color: var(--accent);
   margin-bottom: 0.15rem;
-  padding-left: 0.5rem;
 }
 
 .skill-items {
-  padding-left: 2rem;
+  padding-left: 0.5rem;
 }
 
 .skill-line {
