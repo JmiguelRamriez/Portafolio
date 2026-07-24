@@ -41,10 +41,13 @@ function SkillCategory({ skill, index }) {
 
   return (
     <div className="skill-category fade-in" ref={ref} style={{ transitionDelay: `${index * 0.1}s` }}>
-      <h3 className="skill-category-title">{skill.titulo}</h3>
-      <div className="skill-tags">
+      <div className="skill-category-header">{skill.titulo}</div>
+      <div className="skill-items">
         {skill.items.map((item, i) => (
-          <span key={i}>{item}</span>
+          <div key={i} className="skill-line">
+            <span className="skill-tree">{i === skill.items.length - 1 ? '└─' : '├─'}</span>
+            <span className="skill-name">{item}</span>
+          </div>
         ))}
       </div>
     </div>

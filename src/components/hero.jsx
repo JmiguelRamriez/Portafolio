@@ -17,7 +17,7 @@ function Hero() {
             </span>
             <h1>Jos&eacute; Miguel Ram&iacute;rez</h1>
             <p className="hero-subtitle">Robotics &amp; Intelligent Systems Engineering</p>
-            <p className="hero-detail">@ Tec de Monterrey &middot; from Chile</p>
+            <p className="hero-detail">@ Tec de Monterrey</p>
           </div>
         </div>
 
