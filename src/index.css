@@ -196,8 +196,6 @@ code {
 }
 
 .btn-primary:active {
-  transform: translateY(-1px) scale(0.97
-.btn-primary:active {
   transform: translateY(-1px) scale(0.97);
 }
 
