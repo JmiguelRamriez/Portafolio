@@ -5,29 +5,6 @@ import './GitHubFeed.css'
 const CACHE_KEY = 'gh-lang-cache'
 const CACHE_TTL = 30 * 60 * 1000
 
-const LANG_COLORS = {
-  Python: '#3572a5',
-  'C++': '#f34b7d',
-  C: '#555555',
-  TypeScript: '#3178c6',
-  JavaScript: '#f1e05a',
-  HTML: '#e34c26',
-  CSS: '#563d7c',
-  Rust: '#dea584',
-  Java: '#b07219',
-  Kotlin: '#a97bff',
-  Go: '#00add8',
-  Shell: '#89e051',
-  'C#': '#178600',
-  Swift: '#f05138',
-  Dart: '#00b4ab',
-  'Jupyter Notebook': '#da5b0b',
-  Makefile: '#427819',
-  CMake: '#da3434',
-  Verilog: '#b2b7f8',
-  VHDL: '#adb2cb',
-}
-
 function GitHubFeed() {
   const { t, lang } = useLanguage()
   const [languages, setLanguages] = useState(null)
@@ -83,11 +60,11 @@ function GitHubFeed() {
 
         {languages ? (
           <div className="lang-chart">
-            {languages.map((lang) => (
+            {languages.map((lang, i) => (
               <div key={lang.name} className="lang-row">
                 <span
                   className="lang-dot"
-                  style={{ background: LANG_COLORS[lang.name] || '#8b949e' }}
+                  style={{ opacity: 1 - i * 0.12 }}
                 />
                 <span className="lang-name">{lang.name}</span>
                 <div className="lang-bar-track">
@@ -95,7 +72,7 @@ function GitHubFeed() {
                     className="lang-bar-fill"
                     style={{
                       width: `${(lang.count / maxCount) * 100}%`,
-                      background: LANG_COLORS[lang.name] || '#8b949e',
+                      opacity: 1 - i * 0.12,
                     }}
                   />
                 </div>
