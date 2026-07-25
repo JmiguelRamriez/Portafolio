@@ -2,114 +2,97 @@
   padding: 5rem 0;
 }
 
-/* ─── Layout ─── */
+/* ─── Chart ─── */
 
-.contrib-wrap {
+.lang-chart {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.8rem;
+  max-width: 520px;
+  margin: 0 auto;
+  width: 100%;
 }
 
-.contrib-header {
+.lang-row {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.25rem;
+  gap: 0.75rem;
 }
 
-.contrib-total {
+.lang-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.lang-name {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--text);
+  width: 110px;
+  flex-shrink: 0;
+}
+
+.lang-bar-track {
+  flex: 1;
+  height: 8px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.lang-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lang-count {
   font-family: var(--mono);
   font-size: 0.85rem;
   color: var(--text-secondary);
-}
-
-/* ─── Table ─── */
-
-.contrib-table {
-  display: flex;
-  gap: 6px;
-}
-
-.contrib-labels {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding-top: 1.25rem;
-}
-
-.contrib-dow {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  color: var(--text-secondary);
-  opacity: 0.5;
-  height: 13px;
-  line-height: 13px;
-  width: 24px;
+  width: 20px;
   text-align: right;
-  padding-right: 4px;
+  font-weight: 600;
 }
 
-.contrib-body {
-  display: grid;
-  grid-template-rows: repeat(7, 13px);
-  grid-template-columns: repeat(var(--cols, 53), 13px);
-  gap: 4px;
-  position: relative;
-}
-
-.contrib-month {
-  position: absolute;
-  top: -14px;
+.lang-subtitle {
   font-family: var(--mono);
-  font-size: 0.6rem;
+  font-size: 0.72rem;
   color: var(--text-secondary);
   opacity: 0.5;
-}
-
-/* ─── Cell ─── */
-
-.contrib-cell {
-  width: 13px;
-  height: 13px;
-  border-radius: 3px;
-  background: transparent;
-}
-
-.contrib-cell--active {
-  border-radius: 3px;
-  cursor: default;
-  transition: opacity 0.15s;
-}
-
-.contrib-cell--l0 { background: rgba(139, 92, 246, 0.04); }
-.contrib-cell--l1 { background: rgba(139, 92, 246, 0.15); }
-.contrib-cell--l2 { background: rgba(139, 92, 246, 0.35); }
-.contrib-cell--l3 { background: rgba(139, 92, 246, 0.55); }
-.contrib-cell--l4 { background: rgba(139, 92, 246, 0.85); }
-
-.contrib-cell--active:hover {
-  opacity: 0.8;
-  outline: 2px solid var(--accent);
-  outline-offset: -1px;
+  text-align: center;
+  margin-top: 0.5rem;
 }
 
 /* ─── Skeleton ─── */
 
-.contrib-skeleton {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-}
-
-.contrib-cell--skeleton {
-  width: 13px;
-  height: 13px;
-  border-radius: 3px;
+.lang-dot--sk {
   background: var(--border);
-  animation: contrib-shimmer 1.5s ease-in-out infinite;
+  animation: lang-shimmer 1.5s ease-in-out infinite;
 }
 
-@keyframes contrib-shimmer {
+.lang-name--sk {
+  background: var(--border);
+  border-radius: 4px;
+  height: 12px;
+  animation: lang-shimmer 1.5s ease-in-out infinite;
+}
+
+.lang-bar-fill--sk {
+  background: var(--border) !important;
+  animation: lang-shimmer 1.5s ease-in-out infinite;
+}
+
+.lang-count--sk {
+  background: var(--border);
+  border-radius: 4px;
+  height: 12px;
+  animation: lang-shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes lang-shimmer {
   0%, 100% { opacity: 0.3; }
   50% { opacity: 0.7; }
 }
@@ -122,34 +105,20 @@
   margin-top: 2rem;
 }
 
-/* ─── Light theme ─── */
-
-[data-theme="light"] .contrib-cell--l0 { background: rgba(124, 58, 237, 0.03); }
-[data-theme="light"] .contrib-cell--l1 { background: rgba(124, 58, 237, 0.1); }
-[data-theme="light"] .contrib-cell--l2 { background: rgba(124, 58, 237, 0.25); }
-[data-theme="light"] .contrib-cell--l3 { background: rgba(124, 58, 237, 0.4); }
-[data-theme="light"] .contrib-cell--l4 { background: rgba(124, 58, 237, 0.65); }
-
 /* ─── Responsive ─── */
 
-@media (max-width: 768px) {
-  .contrib-body {
-    gap: 3px;
-    grid-template-columns: repeat(var(--cols, 53), 10px);
-    grid-template-rows: repeat(7, 10px);
+@media (max-width: 640px) {
+  .lang-name {
+    width: 80px;
+    font-size: 0.78rem;
   }
 
-  .contrib-cell,
-  .contrib-cell--skeleton {
-    width: 10px;
-    height: 10px;
+  .lang-bar-track {
+    height: 6px;
   }
 
-  .contrib-labels {
-    display: none;
-  }
-
-  .contrib-month {
-    font-size: 0.5rem;
+  .lang-count {
+    font-size: 0.78rem;
+    width: 16px;
   }
 }

@@ -44,8 +44,9 @@ export const en = {
     },
   },
   githubFeed: {
-    sectionTag: '$ git log --oneline -6',
-    title: 'Recent Activity',
+    sectionTag: '$ cat languages',
+    title: 'Languages Across Repos',
+    subtitle: 'Based on {count} public repositories',
     viewAll: 'View all on GitHub',
   },
   experience: {
@@ -134,8 +135,9 @@ export const es = {
     },
   },
   githubFeed: {
-    sectionTag: '$ git log --oneline -6',
-    title: 'Actividad Reciente',
+    sectionTag: '$ cat lenguajes',
+    title: 'Lenguajes en Repos',
+    subtitle: 'Basado en {count} repositorios p\u00fablicos',
     viewAll: 'Ver todo en GitHub',
   },
   experience: {
