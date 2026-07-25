@@ -1,5 +1,5 @@
-import { useRef, useEffect } from 'react'
 import { useLanguage } from '../i18n/LanguageContext'
+import useScrollReveal from '../hooks/useScrollReveal'
 import './Skills.css'
 import SectionBg from './SectionBg'
 import './SectionBg.css'
@@ -25,23 +25,7 @@ const skillsData = [
 
 function SkillCategory({ skill, index }) {
   const { t } = useLanguage()
-  const ref = useRef(null)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.add('visible')
-          obs.unobserve(el)
-        }
-      },
-      { threshold: 0.15 }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [])
+  const ref = useScrollReveal()
 
   return (
     <div className="skill-category fade-in" ref={ref} style={{ transitionDelay: `${index * 0.1}s` }}>

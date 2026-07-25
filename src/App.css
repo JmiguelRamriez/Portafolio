@@ -80,19 +80,39 @@ nav.scrolled {
   font-family: var(--mono);
   font-size: 0.88rem;
   font-weight: 500;
-  padding: 0.45rem 0.9rem;
-  border-radius: 100px;
-  transition: color 0.3s, background 0.3s;
+  padding: 0.3rem 0.6rem;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 1.5px;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.3s cubic-bezier(0.32, 0.72, 0, 1), left 0.3s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 .nav-link:hover {
   color: var(--text);
-  background: rgba(139, 92, 246, 0.08);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  left: 0;
 }
 
 .nav-link.active {
   color: var(--accent);
-  background: rgba(139, 92, 246, 0.1);
+}
+
+.nav-link.active::after {
+  width: 100%;
+  left: 0;
 }
 
 .nav-cta {
@@ -434,6 +454,10 @@ nav.scrolled {
     padding: 0.6rem 1rem;
     width: 100%;
     text-align: center;
+  }
+
+  .nav-link::after {
+    bottom: 4px;
   }
 
   .nav-cta {

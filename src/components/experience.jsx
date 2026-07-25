@@ -1,9 +1,7 @@
-import { useRef, useEffect } from 'react'
 import { useLanguage } from '../i18n/LanguageContext'
+import useScrollReveal from '../hooks/useScrollReveal'
 import { img } from '../utils'
 import './Experience.css'
-import SectionBg from './SectionBg'
-import './SectionBg.css'
 
 const experienceData = [
   {
@@ -62,23 +60,7 @@ const experienceData = [
 
 function ExperienceItem({ item, index }) {
   const { lang, t } = useLanguage()
-  const ref = useRef(null)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.add('visible')
-          obs.unobserve(el)
-        }
-      },
-      { threshold: 0.15 }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [])
+  const ref = useScrollReveal()
 
   const isEs = lang === 'es'
   const title = isEs && item.title_es ? item.title_es : item.title
@@ -88,7 +70,12 @@ function ExperienceItem({ item, index }) {
 
   return (
     <div className={`exp-item ${item.type} fade-in`} ref={ref} style={{ transitionDelay: `${index * 0.1}s` }}>
-      <div className="exp-pad" />
+      <div className="exp-marker">
+        <div className={`exp-dot ${item.type}`} />
+        <svg className="exp-line" viewBox="0 0 2 100" preserveAspectRatio="none">
+          <line x1="1" y1="0" x2="1" y2="100" />
+        </svg>
+      </div>
       <div className="exp-card">
         <div className="exp-header">
           {item.logo && (
@@ -120,8 +107,7 @@ function ExperienceItem({ item, index }) {
 function Experience() {
   const { t } = useLanguage()
   return (
-    <section id="experience" style={{ position: 'relative' }}>
-      <SectionBg variant="scattered" />
+    <section id="experience">
       <div className="container">
         <div className="section-header fade-in">
           <span className="section-tag">{t('experience.sectionTag')}</span>

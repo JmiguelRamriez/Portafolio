@@ -10,25 +10,52 @@
 
 .exp-item {
   position: relative;
-  padding-left: 44px;
+  padding-left: 40px;
 }
 
-.exp-pad {
+.exp-marker {
   position: absolute;
   left: 0;
-  top: 12px;
-  width: 28px;
-  height: 8px;
-  border-radius: 2px;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.exp-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  z-index: 1;
+  margin-top: 10px;
+  transition: box-shadow 0.3s;
+}
+
+.exp-dot.education {
+  background: var(--accent-subtle);
+}
+
+.exp-dot.work {
   background: var(--accent);
 }
 
-.exp-item.education .exp-pad {
-  background: var(--accent-technical);
+.exp-line {
+  flex: 1;
+  width: 2px;
+  margin: 2px 0;
 }
 
-.exp-item.work .exp-pad {
-  background: var(--accent);
+.exp-line line {
+  stroke: var(--border);
+  stroke-width: 1.5;
+}
+
+.exp-item:last-child .exp-line {
+  display: none;
 }
 
 .exp-card {
@@ -36,11 +63,12 @@
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 1.5rem;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
 }
 
 .exp-card:hover {
   border-color: rgba(139, 92, 246, 0.25);
+  background: var(--surface-raised);
   box-shadow: 0 8px 30px rgba(139, 92, 246, 0.08);
 }
 
@@ -83,7 +111,7 @@
 }
 
 .exp-item.education .exp-type {
-  color: var(--accent-technical);
+  color: var(--accent-subtle);
 }
 
 .exp-header-text h3 {
@@ -144,6 +172,6 @@
 
 @media (max-width: 640px) {
   .exp-item {
-    padding-left: 40px;
+    padding-left: 36px;
   }
 }

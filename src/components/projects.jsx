@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { useLanguage } from '../i18n/LanguageContext'
+import useScrollReveal from '../hooks/useScrollReveal'
 import './Project.css'
 import SectionBg from './SectionBg'
 import './SectionBg.css'
@@ -52,23 +53,7 @@ function ProjectCard({ project, index, onSelect }) {
   const [imgIndex, setImgIndex] = useState(0)
   const [loaded, setLoaded] = useState(false)
   const intervalRef = useRef(null)
-  const cardRef = useRef(null)
-
-  useEffect(() => {
-    const el = cardRef.current
-    if (!el) return
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.add('visible')
-          obs.unobserve(el)
-        }
-      },
-      { threshold: 0.15 }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [])
+  const cardRef = useScrollReveal()
 
   function handleMouseEnter() {
     if (!project.imagenes || project.imagenes.length < 2) return

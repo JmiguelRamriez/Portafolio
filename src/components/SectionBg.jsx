@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import useScrollReveal from '../hooks/useScrollReveal'
 import './SectionBg.css'
 
 const PATTERNS = {
@@ -56,23 +56,7 @@ const PATTERNS = {
 }
 
 function SectionBg({ variant = 'top-right' }) {
-  const ref = useRef(null)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.add('visible')
-          obs.unobserve(el)
-        }
-      },
-      { threshold: 0.05 }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [])
+  const ref = useScrollReveal(0.05)
 
   const w = 800
   const h = 600
