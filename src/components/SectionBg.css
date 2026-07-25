@@ -1,0 +1,57 @@
+.section-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.section-bg.visible {
+  opacity: 1;
+}
+
+.section-bg svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.section-trace {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.2;
+  opacity: 0.12;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.section-trace.section-pulse {
+  stroke-width: 1.6;
+  stroke-dasharray: 6 40;
+  stroke-dashoffset: 46;
+  opacity: 0.18;
+  animation: section-flow 6s linear infinite;
+}
+
+@keyframes section-flow {
+  to { stroke-dashoffset: 0; }
+}
+
+.section-via {
+  fill: var(--accent);
+  opacity: 0.08;
+}
+
+[data-theme="light"] .section-trace {
+  opacity: 0.08;
+}
+
+[data-theme="light"] .section-trace.section-pulse {
+  opacity: 0.12;
+}
+
+[data-theme="light"] .section-via {
+  opacity: 0.06;
+}

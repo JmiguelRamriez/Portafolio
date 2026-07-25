@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useLanguage } from '../i18n/LanguageContext'
 import './Contact.css'
+import SectionBg from './SectionBg'
+import './SectionBg.css'
 
 function Contact() {
   const { t } = useLanguage()
@@ -28,7 +30,8 @@ function Contact() {
   }
 
   return (
-    <section id="contact">
+    <section id="contact" style={{ position: 'relative' }}>
+      <SectionBg variant="top-right" />
       <div className="container">
         <div className="contact-header fade-in">
           <span className="section-tag">

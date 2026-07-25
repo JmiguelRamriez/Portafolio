@@ -2,6 +2,8 @@ import { useRef, useEffect } from 'react'
 import { useLanguage } from '../i18n/LanguageContext'
 import { img } from '../utils'
 import './Experience.css'
+import SectionBg from './SectionBg'
+import './SectionBg.css'
 
 const experienceData = [
   {
@@ -118,7 +120,8 @@ function ExperienceItem({ item, index }) {
 function Experience() {
   const { t } = useLanguage()
   return (
-    <section id="experience">
+    <section id="experience" style={{ position: 'relative' }}>
+      <SectionBg variant="scattered" />
       <div className="container">
         <div className="section-header fade-in">
           <span className="section-tag">{t('experience.sectionTag')}</span>

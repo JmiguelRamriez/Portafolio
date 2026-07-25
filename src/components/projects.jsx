@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
 import { useLanguage } from '../i18n/LanguageContext'
 import './Project.css'
+import SectionBg from './SectionBg'
+import './SectionBg.css'
 import projects from "../data/projects"
 
 const categories = [
@@ -236,7 +238,8 @@ function Projects() {
     : active === 'todos' ? projects : projects.filter(p => p.categoria === active)
 
   return (
-    <section id="projects">
+    <section id="projects" style={{ position: 'relative' }}>
+      <SectionBg variant="top-right" />
       <div className="container">
         <div className="section-header fade-in">
           <span className="section-tag">{t('projects.sectionTag')}</span>
