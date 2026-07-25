@@ -4,6 +4,7 @@ import Navbar from './components/navbar'
 import Hero from './components/hero'
 import Projects from './components/projects'
 import Skills from './components/skills'
+import GitHubFeed from './components/GitHubFeed'
 import Experience from './components/experience'
 import Contact from './components/contact'
 import Footer from './components/footer'
@@ -35,6 +36,7 @@ function App() {
         </div>
         <Projects />
         <Skills />
+        <GitHubFeed />
         <Experience />
         <Contact />
         <Footer />

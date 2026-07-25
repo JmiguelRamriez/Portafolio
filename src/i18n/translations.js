@@ -43,6 +43,11 @@ export const en = {
       complementary: 'Complementary',
     },
   },
+  githubFeed: {
+    sectionTag: '$ git log --oneline -6',
+    title: 'Recent Activity',
+    viewAll: 'View all on GitHub',
+  },
   experience: {
     sectionTag: '$ cat experience',
     title: 'Education & Work',
@@ -127,6 +132,11 @@ export const es = {
       web: 'Web y Software',
       complementary: 'Complementario',
     },
+  },
+  githubFeed: {
+    sectionTag: '$ git log --oneline -6',
+    title: 'Actividad Reciente',
+    viewAll: 'Ver todo en GitHub',
   },
   experience: {
     sectionTag: '$ cat experiencia',
