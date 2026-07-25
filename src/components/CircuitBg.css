@@ -46,14 +46,14 @@
 }
 
 .chip rect {
-  fill: rgba(129, 140, 248, 0.03);
+  fill: rgba(139, 92, 246, 0.03);
   stroke: var(--border);
   stroke-width: 1.4;
   transition: fill 0.25s, stroke 0.25s, filter 0.25s;
 }
 
 .chip.active rect {
-  fill: rgba(129, 140, 248, 0.1);
+  fill: rgba(139, 92, 246, 0.1);
   stroke: var(--accent);
   filter: drop-shadow(0 0 6px var(--accent));
 }

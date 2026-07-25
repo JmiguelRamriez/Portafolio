@@ -47,7 +47,7 @@ function Hero() {
             </div>
             <div className="hero-status">
               <span className="hero-status-dot" />
-              <span>Open to opportunities</span>
+              <span>{t('hero.status')}</span>
             </div>
           </div>
         </div>
