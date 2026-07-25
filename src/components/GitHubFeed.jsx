@@ -2,115 +2,111 @@ import { useState, useEffect } from 'react'
 import { useLanguage } from '../i18n/LanguageContext'
 import './GitHubFeed.css'
 
-const CACHE_KEY = 'gh-feed-cache'
-const CACHE_TTL = 5 * 60 * 1000
+const CACHE_KEY = 'gh-contrib-cache'
+const CACHE_TTL = 10 * 60 * 1000
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 
-const LANG_COLORS = {
-  'C++': '#f34b7d',
-  'C': '#555555',
-  'Python': '#3572a5',
-  'JavaScript': '#f1e05a',
-  'TypeScript': '#3178c6',
-  'Rust': '#dea584',
-  'HTML': '#e34c26',
-  'CSS': '#563d7c',
-  'Java': '#b07219',
-  'Kotlin': '#a97bff',
-  'Go': '#00add8',
-  'Shell': '#89e051',
-  'Makefile': '#427819',
-  'CMake': '#da3434',
-  'SystemVerilog': '#dae1c2',
-  'VHDL': '#adb2cb',
-  'Swift': '#f05138',
-  'Dart': '#00b4ab',
-  'Jupyter Notebook': '#da5b0b',
-  'Verilog': '#b2b7f8',
+function parseContributions(html) {
+  const fromMatch = html.match(/data-from="(\d{4}-\d{2}-\d{2})/)
+  const toMatch = html.match(/data-to="(\d{4}-\d{2}-\d{2})/)
+  if (!fromMatch || !toMatch) throw new Error('no date range')
+
+  const start = new Date(fromMatch[1] + 'T00:00:00')
+  const end = new Date(toMatch[1] + 'T00:00:00')
+
+  const counts = []
+  const re = /(?:(\d+)|No)\s+contributions?\s+on\s+\w+\s+\d+/g
+  let m
+  while ((m = re.exec(html)) !== null) {
+    counts.push(m[1] ? parseInt(m[1]) : 0)
+  }
+
+  const entries = {}
+  const cur = new Date(start)
+  let i = 0
+  while (cur <= end && i < counts.length) {
+    const key = cur.toISOString().slice(0, 10)
+    entries[key] = counts[i]
+    cur.setDate(cur.getDate() + 1)
+    i++
+  }
+  return { entries, start, end }
 }
 
-function relativeTime(dateStr) {
-  const now = Date.now()
-  const diff = now - new Date(dateStr).getTime()
-  const min = Math.floor(diff / 60000)
-  if (min < 1) return 'just now'
-  if (min < 60) return `${min}m ago`
-  const hrs = Math.floor(min / 60)
-  if (hrs < 24) return `${hrs}h ago`
-  const days = Math.floor(hrs / 24)
-  if (days < 30) return `${days}d ago`
-  const months = Math.floor(days / 30)
-  return `${months}mo ago`
-}
-
-function SkeletonCard() {
-  return (
-    <div className="gh-card gh-skeleton">
-      <div className="gh-sk-line gh-sk-line--short" />
-      <div className="gh-sk-line gh-sk-line--long" />
-      <div className="gh-sk-row">
-        <div className="gh-sk-badge" />
-        <div className="gh-sk-badge gh-sk-badge--short" />
-      </div>
-    </div>
-  )
+function getLevel(count) {
+  if (count === 0) return 0
+  if (count <= 3) return 1
+  if (count <= 10) return 2
+  if (count <= 25) return 3
+  return 4
 }
 
 function GitHubFeed() {
   const { t } = useLanguage()
-  const [repos, setRepos] = useState(null)
-  const [error, setError] = useState(false)
+  const [grid, setGrid] = useState(null)
+  const [total, setTotal] = useState(null)
+  const [meta, setMeta] = useState(null)
 
   useEffect(() => {
     const cached = sessionStorage.getItem(CACHE_KEY)
     if (cached) {
       try {
-        const { data, ts } = JSON.parse(cached)
+        const { grid: g, total: tot, meta: m, ts } = JSON.parse(cached)
         if (Date.now() - ts < CACHE_TTL) {
-          setRepos(data)
+          setGrid(g); setTotal(tot); setMeta(m)
           return
         }
-      } catch {
-        sessionStorage.removeItem(CACHE_KEY)
-      }
+      } catch { sessionStorage.removeItem(CACHE_KEY) }
     }
 
-    fetch('https://api.github.com/users/JmiguelRamriez/repos?sort=pushed&per_page=6&type=owner')
-      .then((res) => {
-        if (!res.ok) throw new Error('GitHub API error')
-        return res.json()
+    fetch('https://github.com/users/JmiguelRamriez/contributions')
+      .then(r => r.text())
+      .then(html => {
+        const { entries, start, end } = parseContributions(html)
+        const totalCount = Object.values(entries).reduce((a, b) => a + b, 0)
+
+        const first = new Date(start)
+        while (first.getDay() !== 0) first.setDate(first.getDate() - 1)
+        const last = new Date(end)
+
+        const cols = Math.ceil((last - first) / (7 * 86400000))
+        const cells = []
+        const months = []
+
+        let prevMonth = -1
+        for (let w = 0; w < cols; w++) {
+          for (let d = 0; d < 7; d++) {
+            const date = new Date(first)
+            date.setDate(date.getDate() + w * 7 + d)
+            const key = date.toISOString().slice(0, 10)
+            const count = entries[key]
+            if (count !== undefined) {
+              cells.push({ key, count, day: d, week: w, level: getLevel(count) })
+            } else {
+              cells.push({ key, count: null, day: d, week: w, level: -1 })
+            }
+          }
+          const m = new Date(first)
+          m.setDate(m.getDate() + w * 7 + 3)
+          const month = m.getMonth()
+          if (month !== prevMonth) {
+            months.push({ label: MONTHS[month], col: w })
+            prevMonth = month
+          }
+        }
+
+        const dayLabels = ['Mon','','Wed','','Fri','','Sun']
+
+        const result = { cells, months, dayLabels, cols, first, last }
+        sessionStorage.setItem(CACHE_KEY, JSON.stringify({ grid: result, total: totalCount, meta: null, ts: Date.now() }))
+        setGrid(result)
+        setTotal(totalCount)
       })
-      .then((data) => {
-        const filtered = data.filter((r) => !r.fork)
-        sessionStorage.setItem(CACHE_KEY, JSON.stringify({ data: filtered, ts: Date.now() }))
-        setRepos(filtered)
-      })
-      .catch(() => setError(true))
+      .catch(() => {})
   }, [])
 
-  if (error) return null
-  if (!repos) {
-    return (
-      <section id="github-feed">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-tag">
-              <span className="tag-dot" />
-              {t('githubFeed.sectionTag')}
-            </span>
-            <h2>{t('githubFeed.title')}</h2>
-          </div>
-          <div className="gh-grid">
-            <SkeletonCard />
-            <SkeletonCard />
-            <SkeletonCard />
-          </div>
-        </div>
-      </section>
-    )
-  }
-
   return (
-    <section id="github-feed">
+    <section id="github-feed" style={{ position: 'relative' }}>
       <div className="container">
         <div className="section-header">
           <span className="section-tag">
@@ -119,39 +115,47 @@ function GitHubFeed() {
           </span>
           <h2>{t('githubFeed.title')}</h2>
         </div>
-        <div className="gh-grid">
-          {repos.map((repo) => (
-            <a
-              key={repo.id}
-              href={repo.html_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="gh-card"
-            >
-              <div className="gh-card-top">
-                <svg className="gh-repo-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                  <path fillRule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z" />
-                </svg>
-                <span className="gh-repo-name">{repo.name}</span>
+
+        {grid ? (
+          <div className="contrib-wrap">
+            <div className="contrib-header">
+              <span className="contrib-total">{total} contributions in the last year</span>
+            </div>
+            <div className="contrib-table">
+              <div className="contrib-labels">
+                {grid.dayLabels.map((l, i) => (
+                  <span key={i} className="contrib-dow">{l}</span>
+                ))}
               </div>
-              {repo.description && (
-                <p className="gh-repo-desc">{repo.description}</p>
-              )}
-              <div className="gh-card-bottom">
-                {repo.language && (
-                  <span className="gh-lang">
-                    <span
-                      className="gh-lang-dot"
-                      style={{ background: LANG_COLORS[repo.language] || '#8b949e' }}
-                    />
-                    {repo.language}
+              <div className="contrib-body" style={{ '--cols': grid.cols }}>
+                {grid.months.map((m, i) => (
+                  <span
+                    key={i}
+                    className="contrib-month"
+                    style={{ gridColumn: m.col + 1 }}
+                  >
+                    {m.label}
                   </span>
-                )}
-                <span className="gh-time">{relativeTime(repo.pushed_at)}</span>
+                ))}
+                {grid.cells.map((c) => (
+                  <span
+                    key={c.key}
+                    className={`contrib-cell ${c.level >= 0 ? 'contrib-cell--active' : ''} contrib-cell--l${Math.max(0, c.level)}`}
+                    style={{ gridRow: c.day + 1 }}
+                    title={c.count !== null ? `${c.count} contribution${c.count !== 1 ? 's' : ''} on ${new Date(c.key + 'T00:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}` : undefined}
+                  />
+                ))}
               </div>
-            </a>
-          ))}
-        </div>
+            </div>
+          </div>
+        ) : (
+          <div className="contrib-skeleton">
+            {Array.from({ length: 200 }).map((_, i) => (
+              <span key={i} className="contrib-cell contrib-cell--skeleton" />
+            ))}
+          </div>
+        )}
+
         <div className="gh-footer">
           <a
             href="https://github.com/JmiguelRamriez"
