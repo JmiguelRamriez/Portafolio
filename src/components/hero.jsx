@@ -1,6 +1,7 @@
 import { useLanguage } from '../i18n/LanguageContext'
 import { img, file } from '../utils'
 import CircuitBg from './CircuitBg'
+import PcbCorners from './PcbCorners'
 
 function Hero() {
   const { t } = useLanguage()
@@ -41,9 +42,22 @@ function Hero() {
 
         <div className="hero-visual">
           <div className="hero-photo-frame">
-            <div className="hero-photo-ring" />
+            <PcbCorners />
             <div className="hero-photo">
-              <img src={img('images/YoTec.jpg')} alt="Jose Miguel Ramirez" />
+              <picture>
+                <source srcSet={img('images/optimized/YoTec-800w.avif')} type="image/avif" />
+                <source srcSet={img('images/optimized/YoTec-800w.webp')} type="image/webp" />
+                <img
+                  src={img('images/optimized/YoTec-800w.webp')}
+                  alt="Jose Miguel Ramirez"
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
+                  width="800"
+                  height="800"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </picture>
             </div>
             <div className="hero-status">
               <span className="hero-status-dot" />

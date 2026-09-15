@@ -289,27 +289,20 @@ nav.scrolled {
   gap: 1rem;
 }
 
-.hero-photo-ring {
-  position: absolute;
-  inset: -12px;
-  border-radius: 50%;
-  border: 2px solid rgba(167, 139, 250, 0.15);
-  z-index: 0;
-}
-
-.hero-photo-ring::after {
-  content: '';
+.hero-corners-svg {
   position: absolute;
   inset: -20px;
-  border-radius: 50%;
-  border: 1px dashed rgba(139, 92, 246, 0.15);
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  z-index: 0;
+  pointer-events: none;
 }
 
 .hero-photo {
   position: relative;
   z-index: 1;
-  width: 240px;
-  height: 240px;
+  width: 280px;
+  height: 280px;
   border-radius: 50%;
   overflow: hidden;
   border: 2px solid rgba(139, 92, 246, 0.3);
@@ -494,16 +487,14 @@ nav.scrolled {
   }
 
   .hero-photo {
-    width: 180px;
-    height: 180px;
+    width: 220px;
+    height: 220px;
   }
 
-  .hero-photo-ring {
-    inset: -8px;
-  }
-
-  .hero-photo-ring::after {
+  .hero-corners-svg {
     inset: -14px;
+    width: calc(100% + 28px);
+    height: calc(100% + 28px);
   }
 
   .scroll-hint {

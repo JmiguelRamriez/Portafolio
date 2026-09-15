@@ -32,6 +32,11 @@ export const en = {
     viewProject: 'View Project',
     viewOnGitHub: 'View on GitHub',
     downloadManual: 'Download Manual',
+    closeModal: 'Close modal',
+    prevImage: 'Previous image',
+    nextImage: 'Next image',
+    imageIndicator: 'Image indicators',
+    categoryFilter: 'Project categories',
   },
   skills: {
     sectionTag: '$ cat skills',
@@ -123,6 +128,11 @@ export const es = {
     viewProject: 'Ver Proyecto',
     viewOnGitHub: 'Ver en GitHub',
     downloadManual: 'Descargar Manual',
+    closeModal: 'Cerrar modal',
+    prevImage: 'Imagen anterior',
+    nextImage: 'Siguiente imagen',
+    imageIndicator: 'Indicadores de imagen',
+    categoryFilter: 'Categorías de proyectos',
   },
   skills: {
     sectionTag: '$ cat habilidades',
