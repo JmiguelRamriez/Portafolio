@@ -114,7 +114,7 @@ function CircuitBg() {
   const svgRef = useRef(null)
   const rafRef = useRef(null)
 
-  const traces = useMemo(() => Array.from({ length: 70 }, () => generateTrace()), [])
+  const traces = useMemo(() => Array.from({ length: 25 }, () => generateTrace()), [])
   const traceBounds = useMemo(() => traces.map(computeBounds), [traces])
   const chips = useMemo(() => chipDefs.map(c => ({
     ...c,
@@ -181,7 +181,7 @@ function CircuitBg() {
           )
         })}
 
-        {traces.filter((_, i) => i % 4 === 0).flatMap((points, gi) =>
+        {traces.filter((_, i) => i % 6 === 0).flatMap((points, gi) =>
           points.slice(1, -1).map(([x, y], pi) => {
             const intensity = getIntensity({
               minX: x * CELL - 5, maxX: x * CELL + 5,

@@ -59,15 +59,13 @@
     "titulo_es": "clase-notes — Captura y Transcripci\u00f3n Local de Clases",
     "featured": true,
     "categoria": "software",
-    "badge": "Rust + Local AI",
-    "badge_es": "Rust + IA Local",
     "brief": "Rust TUI app: record from mic/iPhone → Whisper.cpp transcription → Ollama LLM summaries → Obsidian notes. 100% local, zero cloud.",
     "brief_es": "App TUI en Rust: graba con mic/iPhone → transcribe con Whisper.cpp → resume con Ollama LLM → notas en Obsidian. 100% local, sin nube.",
     "descripcion": "Full-featured lecture capture pipeline built in Rust. Cross-platform audio capture (cpal) with iPhone-as-wireless-mic via WebSocket (TLS). Local transcription using whisper-rs (Whisper.cpp bindings) with GPU acceleration support (CUDA/Metal). Configurable audio filtering presets (noise gate + RMS normalizer). Post-processing pipeline: Whisper raw text → LLM cleanup (temp 0.2) → structured summary (temp 0.3) → Obsidian Markdown with YAML frontmatter, wikilinks, and audio attachment copy. Interactive ratatui TUI for recording, processing existing WAVs, and browsing notes. CLI mode for automation. MIT licensed.",
     "descripcion_es": "Pipeline completo de captura de clases construido en Rust. Captura de audio multiplataforma (cpal) con iPhone como micr\u00f3fono inal\u00e1mbrico v\u00eda WebSocket (TLS). Transcripci\u00f3n local con whisper-rs (bindings de Whisper.cpp) con soporte de aceleraci\u00f3n GPU (CUDA/Metal). Presets de filtrado de audio configurables (noise gate + normalizador RMS). Post-procesamiento: texto crudo Whisper → limpieza LLM (temp 0.2) → resumen estructurado (temp 0.3) → Markdown Obsidian con frontmatter YAML, wikilinks y copia de audio adjunto. TUI interactiva con ratatui para grabar, procesar WAVs existentes y navegar notas. Modo CLI para automatizaci\u00f3n. Licencia MIT.",
     "stack": ["Rust", "Whisper.cpp", "Ollama", "ratatui", "cpal", "WebSocket", "Obsidian"],
     "url": "https://github.com/JmiguelRamriez/clase-notes",
-    "imagenes": ["images/clase-notes-tui.svg", "images/clase-notes-note.svg"]
+    "imagenes": ["images/optimized/clases_notes_1-800w.webp", "images/optimized/clases_notes_2-800w.webp", "images/optimized/clases_notes_3-800w.webp"]
   },
   {
     "titulo": "FINSIGHTS",
