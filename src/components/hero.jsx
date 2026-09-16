@@ -45,7 +45,7 @@ function Hero() {
             <PcbCorners />
             <div className="hero-photo">
               <picture>
-                <source srcSet={img('images/optimized/YoTec-800w.avif')} type="image/avif" />
+                <source srcSet={img('images/optimized/YoTec-1200w.avif')} type="image/avif" />
                 <source srcSet={img('images/optimized/YoTec-800w.webp')} type="image/webp" />
                 <img
                   src={img('images/optimized/YoTec-800w.webp')}
