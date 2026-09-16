@@ -3,14 +3,7 @@ import { useLanguage } from '../../i18n/LanguageContext'
 import useScrollReveal from '../../hooks/useScrollReveal'
 import OptimizedImage from './OptimizedImage'
 import Placeholder from './Placeholder'
-
-/**
- * Localization helper - returns Spanish version if available and lang is 'es'
- */
-function loc(project, field, lang) {
-  const esField = field + '_es'
-  return lang === 'es' && project[esField] ? project[esField] : project[field]
-}
+import { loc } from '../../utils'
 
 /**
  * ProjectCard - Individual project card with hover image carousel

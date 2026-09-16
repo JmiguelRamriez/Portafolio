@@ -2,14 +2,7 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import { useLanguage } from '../../i18n/LanguageContext'
 import OptimizedImage from './OptimizedImage'
 import Placeholder from './Placeholder'
-
-/**
- * Localization helper
- */
-function loc(project, field, lang) {
-  const esField = field + '_es'
-  return lang === 'es' && project[esField] ? project[esField] : project[field]
-}
+import { loc } from '../../utils'
 
 /**
  * Focus trap hook for modal accessibility
@@ -177,6 +170,7 @@ export default function ProjectModal({ project, onClose }) {
                           onClick={() => setModalImg(i)}
                           role="button"
                           tabIndex={0}
+                          aria-label={`Show image ${i + 1} of ${project.imagenes.length}`}
                           onKeyDown={(e) => {
                             if (e.key === 'Enter' || e.key === ' ') {
                               e.preventDefault()

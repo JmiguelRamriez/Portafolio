@@ -6,7 +6,7 @@ const CACHE_KEY = 'gh-lang-cache'
 const CACHE_TTL = 30 * 60 * 1000
 
 function GitHubFeed() {
-  const { t, lang } = useLanguage()
+  const { t, lang: currentLang } = useLanguage()
   const [languages, setLanguages] = useState(null)
   const [totalRepos, setTotalRepos] = useState(0)
 
@@ -80,7 +80,7 @@ function GitHubFeed() {
               </div>
             ))}
             <p className="lang-subtitle">
-              {lang === 'es'
+              {currentLang === 'es'
                 ? `Basado en ${totalRepos} repositorios públicos`
                 : `Based on ${totalRepos} public repositories`
               }

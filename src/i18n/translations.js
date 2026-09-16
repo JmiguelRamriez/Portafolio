@@ -62,7 +62,9 @@ export const en = {
   },
   contact: {
     sectionTag: '$ ./connect',
-    titleHtml: "Let's <span class=\"accent-text\">Connect</span>",
+    titleBefore: "Let's ",
+    titleAccent: 'Connect',
+    titleAfter: '',
     subtitle: 'Have a project in mind or just want to say hi? Feel free to reach out!',
     email: 'Email',
     location: 'Location',
@@ -158,7 +160,9 @@ export const es = {
   },
   contact: {
     sectionTag: '$ ./conectar',
-    titleHtml: '<span class="accent-text">Conecta</span> conmigo',
+    titleBefore: '',
+    titleAccent: 'Conecta',
+    titleAfter: ' conmigo',
     subtitle: '\u00bfTienes un proyecto en mente o solo quieres saludar? \u00a1No dudes en escribirme!',
     email: 'Correo',
     location: 'Ubicaci\u00f3n',

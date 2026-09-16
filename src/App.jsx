@@ -15,6 +15,7 @@ import './App.css'
 function App() {
   return (
     <LanguageProvider>
+      <a href="#projects" className="skip-link">Skip to content</a>
       <Cursor />
       <div className="noise" />
       <div className="app-content">

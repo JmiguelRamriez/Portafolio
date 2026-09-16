@@ -38,7 +38,7 @@ function Contact() {
             <span className="tag-dot" />
             {t('contact.sectionTag')}
           </span>
-          <h2 dangerouslySetInnerHTML={{ __html: t('contact.titleHtml') }} />
+          <h2>{t('contact.titleBefore')}<span className="accent-text">{t('contact.titleAccent')}</span>{t('contact.titleAfter')}</h2>
           <p className="contact-subtitle">{t('contact.subtitle')}</p>
         </div>
 

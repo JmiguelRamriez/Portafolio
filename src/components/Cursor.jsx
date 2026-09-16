@@ -64,8 +64,8 @@ export default function Cursor() {
 
   return (
     <>
-      <div className="cursor-dot" ref={cursorRef} />
-      <div className="cursor-follower" ref={followerRef} />
+      <div className="cursor-dot" ref={cursorRef} aria-hidden="true" />
+      <div className="cursor-follower" ref={followerRef} aria-hidden="true" />
     </>
   )
 }

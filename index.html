@@ -14,9 +14,19 @@
     <meta property="og:url" content="https://jmiguelramriez.github.io/Portafolio" />
     <meta property="og:image" content="https://jmiguelramriez.github.io/Portafolio/images/YoTec.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@josemiguelr" />
+    <meta name="twitter:image" content="https://jmiguelramriez.github.io/Portafolio/images/optimized/YoTec-800w.webp" />
     <meta name="robots" content="index, follow" />
     <script>
-      (function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t)})();
+      (function(){
+        var stored = localStorage.getItem('theme');
+        if (stored) {
+          document.documentElement.setAttribute('data-theme', stored);
+        } else {
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        }
+      })();
     </script>
     <script data-goatcounter="https://josemiguelr.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
     <script type="application/ld+json">
@@ -35,7 +45,7 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap&text=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,;:!?()[]{}@#$%25&*+-/=%22%27_`~|%3C%3E^çÇñÑáéíóúÁÉÍÓÚüÜ°•→←↑↓✦★☆●○◆◇■□▲△▼▽✓✗" rel="stylesheet">
   </head>
   <body>
     <div id="root"></div>

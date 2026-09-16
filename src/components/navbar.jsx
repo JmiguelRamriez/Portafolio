@@ -78,6 +78,7 @@ function Navbar() {
           className={`nav-hamburger ${menuOpen ? 'open' : ''}`}
           onClick={() => setMenuOpen(v => !v)}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
           data-cursor="link"
         >
           <span />
