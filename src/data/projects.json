@@ -114,6 +114,7 @@
     "descripcion_es": "Novela visual interactiva con ramificaciones de di\u00e1logo din\u00e1micas, gesti\u00f3n de personajes y m\u00faltiples finales. Construida en Python con un motor narrativo personalizado que incluye guardado/carga y transiciones de escena. Proyecto final para un curso optativo.",
     "stack": ["Python", "OOP", "Game Development"],
     "url": "https://github.com/JmiguelRamriez/Juego-Optativa",
+    "liveUrl": "https://jmiguelramriez.github.io/Juego-Optativa/",
     "imagenes": ["images/optimized/juego-800w.webp", "images/optimized/Juego_menu-800w.webp"]
   },
   {
@@ -126,6 +127,7 @@
     "descripcion_es": "Sitio web de noticias que cubre eventos universitarios e historias de profesores, con un art\u00edculo dedicado sobre las contribuciones del profesor Spoturno a la comunidad acad\u00e9mica. Dise\u00f1o editorial con presentaci\u00f3n de contenido accesible.",
     "stack": ["HTML", "CSS", "JavaScript", "Web Design"],
     "url": "https://github.com/JmiguelRamriez/Punto-de-Vista-",
+    "liveUrl": "https://punto-de-vista.vercel.app/",
     "imagenes": ["images/optimized/Punto_Vista-800w.webp"]
   }
 ]
