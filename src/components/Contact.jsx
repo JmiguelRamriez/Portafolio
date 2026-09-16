@@ -114,6 +114,9 @@ function Contact() {
               method="POST"
               onSubmit={handleSubmit}
             >
+              <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px' }} tabIndex={-1}>
+                <input type="text" name="_honey" tabIndex={-1} autoComplete="off" />
+              </div>
               <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="name">{t('contact.formName')}</label>

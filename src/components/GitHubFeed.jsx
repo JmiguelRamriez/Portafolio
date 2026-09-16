@@ -42,7 +42,10 @@ function GitHubFeed() {
         setLanguages(sorted)
         setTotalRepos(data.length)
       })
-      .catch(() => {})
+      .catch(() => {
+        setLanguages([])
+        setTotalRepos(0)
+      })
   }, [])
 
   const maxCount = languages ? languages[0]?.count || 1 : 1
@@ -58,7 +61,7 @@ function GitHubFeed() {
           <h2>{t('githubFeed.title')}</h2>
         </div>
 
-        {languages ? (
+        {languages && languages.length > 0 ? (
           <div className="lang-chart">
             {languages.map((lang, i) => (
               <div key={lang.name} className="lang-row">
@@ -102,6 +105,12 @@ function GitHubFeed() {
               </div>
             ))}
           </div>
+        )}
+
+        {languages && languages.length === 0 && (
+          <p className="github-feed-error" style={{ textAlign: 'center', opacity: 0.5, padding: '2rem 0' }}>
+            {currentLang === 'es' ? 'No se pudieron cargar los datos de GitHub.' : 'Could not load GitHub data.'}
+          </p>
         )}
 
         <div className="gh-footer">

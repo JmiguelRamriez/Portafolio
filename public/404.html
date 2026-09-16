@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Page Not Found</title>
+  <script>
+    // Redirect to home, preserving the path
+    var path = window.location.pathname.replace(/\/$/, '');
+    var base = '/Portafolio';
+    if (path.startsWith(base)) {
+      path = path.slice(base.length);
+    }
+    window.location.replace('/Portafolio/' + (path || ''));
+  </script>
+</head>
+<body>
+  <p>Redirecting... <a href="/Portafolio/">Go to homepage</a></p>
+</body>
+</html>
