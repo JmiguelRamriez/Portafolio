@@ -1,4 +1,4 @@
-import { LanguageProvider } from './i18n/LanguageContext'
+import { LanguageProvider, useLanguage } from './i18n/LanguageContext'
 import Cursor from './components/Cursor'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -12,10 +12,11 @@ import BackToTop from './components/BackToTop'
 import './components/Cursor.css'
 import './App.css'
 
-function App() {
+function AppContent() {
+  const { t } = useLanguage()
   return (
-    <LanguageProvider>
-      <a href="#projects" className="skip-link">Skip to content</a>
+    <>
+      <a href="#projects" className="skip-link">{t('app.skipToContent')}</a>
       <Cursor />
       <div className="noise" />
       <div className="app-content">
@@ -28,7 +29,17 @@ function App() {
               'ESP32', 'Flask', 'Axum', 'MQTT', 'Embedded Linux', 'MicroPython',
               'IoT', 'Electronic Design', 'Firmware', 'Git',
             ].map((s, i) => (
-              <span key={i}>
+              <span key={`a-${i}`}>
+                {s}
+                <span className="ticker-sep">✦</span>
+              </span>
+            ))}
+            {[
+              'KiCad', 'PCB Design', 'C++', 'Python', 'Rust', 'React',
+              'ESP32', 'Flask', 'Axum', 'MQTT', 'Embedded Linux', 'MicroPython',
+              'IoT', 'Electronic Design', 'Firmware', 'Git',
+            ].map((s, i) => (
+              <span key={`b-${i}`}>
                 {s}
                 <span className="ticker-sep">✦</span>
               </span>
@@ -43,6 +54,14 @@ function App() {
         <Footer />
       </div>
       <BackToTop />
+    </>
+  )
+}
+
+function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
     </LanguageProvider>
   )
 }

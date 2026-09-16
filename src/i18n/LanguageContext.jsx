@@ -13,14 +13,19 @@ export function LanguageProvider({ children }) {
     document.documentElement.lang = lang
   }, [lang])
 
-  const t = useCallback((key, fallback) => {
+  const t = useCallback((key, interpolation) => {
     const keys = key.split('.')
     let value = translations[lang]
     for (const k of keys) {
-      if (!value) return fallback ?? key
+      if (!value) return key
       value = value[k]
     }
-    return value ?? fallback ?? key
+    if (typeof value === 'string' && interpolation) {
+      return value.replace(/\{(\w+)\}/g, (_, name) =>
+        interpolation[name] !== undefined ? interpolation[name] : `{${name}}`
+      )
+    }
+    return value ?? key
   }, [lang])
 
   const toggle = useCallback(() => {

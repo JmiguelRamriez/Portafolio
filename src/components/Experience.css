@@ -67,9 +67,9 @@
 }
 
 .exp-card:hover {
-  border-color: rgba(139, 92, 246, 0.25);
+  border-color: color-mix(in srgb, var(--accent) 25%, transparent);
   background: var(--surface-raised);
-  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.08);
+  box-shadow: 0 8px 30px color-mix(in srgb, var(--accent) 8%, transparent);
 }
 
 .exp-header {

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLanguage } from '../i18n/LanguageContext'
-import { file } from '../utils'
+import { img } from '../utils'
 import ThemeToggle from './ThemeToggle'
 import LangToggle from './LangToggle'
 
@@ -68,7 +68,7 @@ function Navbar() {
           <li><a href="#projects" className="nav-link" data-cursor="link" onClick={closeMenu}>{t('nav.projects')}</a></li>
           <li><a href="#skills" className="nav-link" data-cursor="link" onClick={closeMenu}>{t('nav.skills')}</a></li>
           <li><a href="#experience" className="nav-link" data-cursor="link" onClick={closeMenu}>{t('nav.experience')}</a></li>
-          <li><a href={file('files/cv.pdf')} download className="nav-link" data-cursor="link" onClick={closeMenu}>{t('nav.cv')}</a></li>
+          <li><a href={img('files/cv.pdf')} download className="nav-link" data-cursor="link" onClick={closeMenu}>{t('nav.cv')}</a></li>
           <li><LangToggle /></li>
           <li><ThemeToggle /></li>
           <li><a href="#contact" className="btn btn-primary nav-cta" data-cursor="cta" onClick={closeMenu}>{t('nav.contact')}</a></li>
@@ -77,7 +77,7 @@ function Navbar() {
         <button
           className={`nav-hamburger ${menuOpen ? 'open' : ''}`}
           onClick={() => setMenuOpen(v => !v)}
-          aria-label="Toggle menu"
+          aria-label={t('nav.toggleMenu')}
           aria-expanded={menuOpen}
           data-cursor="link"
         >

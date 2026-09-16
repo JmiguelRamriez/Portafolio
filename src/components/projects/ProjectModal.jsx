@@ -48,6 +48,7 @@ function useFocusTrap(isActive, containerRef) {
 export default function ProjectModal({ project, onClose }) {
   const { lang, t } = useLanguage()
   const [modalImg, setModalImg] = useState(0)
+  const [paused, setPaused] = useState(false)
   const modalIntervalRef = useRef(null)
   const modalRef = useRef(null)
   const prevFocusRef = useRef(null)
@@ -69,10 +70,12 @@ export default function ProjectModal({ project, onClose }) {
   useEffect(() => {
     if (!project.imagenes || project.imagenes.length < 2) return
     modalIntervalRef.current = setInterval(() => {
-      setModalImg(prev => (prev + 1) % project.imagenes.length)
+      if (!paused) {
+        setModalImg(prev => (prev + 1) % project.imagenes.length)
+      }
     }, 3000)
     return () => clearInterval(modalIntervalRef.current)
-  }, [project])
+  }, [project, paused])
   
   // Keyboard navigation for carousel
   const handleKeyDown = useCallback((e) => {
@@ -135,7 +138,13 @@ export default function ProjectModal({ project, onClose }) {
           </button>
         </div>
         <div className="modal-body">
-          <div className="modal-image">
+          <div
+            className="modal-image"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+            onFocus={() => setPaused(true)}
+            onBlur={() => setPaused(false)}
+          >
             {project.imagenes && project.imagenes.length > 0 ? (
               <>
                 {/* Carousel navigation */}

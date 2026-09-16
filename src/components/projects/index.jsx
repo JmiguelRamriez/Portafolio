@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useLanguage } from '../../i18n/LanguageContext'
 import SectionBg from '../SectionBg'
-import '../SectionBg.css'
+
 import ProjectCard from './ProjectCard'
 import ProjectModal from './ProjectModal'
 import projects from '../../data/projects'
@@ -25,7 +25,7 @@ export default function Projects() {
     : active === 'todos' ? projects : projects.filter(p => p.categoria === active)
 
   return (
-    <section id="projects" style={{ position: 'relative' }}>
+    <section id="projects" className="section-relative">
       <SectionBg variant="top-right" />
       <div className="container">
         <div className="section-header fade-in">

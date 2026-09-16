@@ -1,5 +1,7 @@
 import { useLanguage } from '../i18n/LanguageContext'
-import { img, file } from '../utils'
+import { img } from '../utils'
+import { socials } from '../data/socials'
+import { ArrowUpRightIcon } from './icons'
 import CircuitBg from './CircuitBg'
 import PcbCorners from './PcbCorners'
 
@@ -24,19 +26,17 @@ function Hero() {
             <a href="#projects" className="btn btn-primary" data-cursor="cta">
               <span>{t('hero.viewProjects')}</span>
               <span className="btn-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                  <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <ArrowUpRightIcon size={14} />
               </span>
             </a>
             <a href="#contact" className="btn btn-outline" data-cursor="link">{t('hero.contactMe')}</a>
-            <a href={file('files/cv.pdf')} download className="btn btn-outline" data-cursor="link">{t('hero.downloadCv')}</a>
+            <a href={img('files/cv.pdf')} download className="btn btn-outline" data-cursor="link">{t('hero.downloadCv')}</a>
           </div>
 
           <div className="hero-socials">
-            <a href="https://github.com/JmiguelRamriez" target="_blank" rel="noopener noreferrer" data-cursor="link">{t('hero.github')}</a>
-            <a href="https://www.linkedin.com/in/jos%C3%A9-miguel-ramirez-gutierrez-a592a4351/" target="_blank" rel="noopener noreferrer" data-cursor="link">{t('hero.linkedin')}</a>
-            <a href="mailto:2005josemiguelramirez@gmail.com" data-cursor="link">{t('hero.email')}</a>
+            <a href={socials.github} target="_blank" rel="noopener noreferrer" data-cursor="link">{t('hero.github')}</a>
+            <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" data-cursor="link">{t('hero.linkedin')}</a>
+            <a href={`mailto:${socials.email}`} data-cursor="link">{t('hero.email')}</a>
           </div>
         </div>
 
@@ -49,7 +49,7 @@ function Hero() {
                 <source srcSet={img('images/optimized/YoTec-800w.webp')} type="image/webp" />
                 <img
                   src={img('images/optimized/YoTec-800w.webp')}
-                  alt="Jose Miguel Ramirez"
+                  alt="Jose Miguel Ramirez — Robotics and Embedded Systems Engineering Student"
                   loading="eager"
                   decoding="async"
                   fetchPriority="high"

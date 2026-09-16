@@ -6,7 +6,12 @@ export const en = {
     experience: 'Experience',
     contact: 'Contact',
     cv: 'CV',
+    toggleMenu: 'Toggle menu',
+    backToTop: 'Back to top',
   },
+  themeToggle: { ariaLabel: 'Toggle theme' },
+  langToggle: { ariaLabel: 'Toggle language' },
+  app: { skipToContent: 'Skip to content' },
   hero: {
     whoami: '$ whoami  \u2192  josemiguel',
     name: 'Jos\u00e9 Miguel Ram\u00edrez',
@@ -52,6 +57,7 @@ export const en = {
     sectionTag: '$ cat languages',
     title: 'Languages Across Repos',
     subtitle: 'Based on {count} public repositories',
+    error: 'Could not load GitHub data.',
     viewAll: 'View all on GitHub',
   },
   experience: {
@@ -104,7 +110,12 @@ export const es = {
     experience: 'Experiencia',
     contact: 'Contacto',
     cv: 'CV',
+    toggleMenu: 'Abrir menú',
+    backToTop: 'Volver arriba',
   },
+  themeToggle: { ariaLabel: 'Cambiar tema' },
+  langToggle: { ariaLabel: 'Cambiar idioma' },
+  app: { skipToContent: 'Saltar al contenido' },
   hero: {
     whoami: '$ whoami  \u2192  josemiguel',
     name: 'Jos\u00e9 Miguel Ram\u00edrez',
@@ -150,6 +161,7 @@ export const es = {
     sectionTag: '$ cat lenguajes',
     title: 'Lenguajes en Repos',
     subtitle: 'Basado en {count} repositorios p\u00fablicos',
+    error: 'No se pudieron cargar los datos de GitHub.',
     viewAll: 'Ver todo en GitHub',
   },
   experience: {

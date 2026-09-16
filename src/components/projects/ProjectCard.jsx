@@ -1,8 +1,9 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useLanguage } from '../../i18n/LanguageContext'
 import useScrollReveal from '../../hooks/useScrollReveal'
 import OptimizedImage from './OptimizedImage'
 import Placeholder from './Placeholder'
+import { ArrowUpRightIcon } from '../icons'
 import { loc } from '../../utils'
 
 /**
@@ -14,6 +15,12 @@ export default function ProjectCard({ project, index, onSelect }) {
   const [loaded, setLoaded] = useState(false)
   const intervalRef = useRef(null)
   const cardRef = useScrollReveal()
+
+  useEffect(() => {
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current)
+    }
+  }, [])
 
   function handleMouseEnter() {
     if (!project.imagenes || project.imagenes.length < 2) return
@@ -33,6 +40,7 @@ export default function ProjectCard({ project, index, onSelect }) {
       ref={cardRef}
       style={{ transitionDelay: `${index * 0.08}s` }}
       data-cursor="link"
+      aria-label={loc(project, 'titulo', lang)}
       onClick={() => onSelect(project)}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -60,9 +68,7 @@ export default function ProjectCard({ project, index, onSelect }) {
         <div className="project-card-overlay">
           <span className="project-card-link">
             {t('projects.viewProject')}
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M7 17L17 7M17 7H7M17 7V17"/>
-            </svg>
+            <ArrowUpRightIcon size={16} />
           </span>
         </div>
       </div>

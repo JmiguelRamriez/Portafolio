@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useLanguage } from '../i18n/LanguageContext'
+import { socials } from '../data/socials'
+import { ArrowUpRightIcon } from './icons'
 import './GitHubFeed.css'
 
 const CACHE_KEY = 'gh-lang-cache'
@@ -23,8 +25,11 @@ function GitHubFeed() {
       } catch { sessionStorage.removeItem(CACHE_KEY) }
     }
 
-    fetch('https://api.github.com/users/JmiguelRamriez/repos?per_page=100&sort=pushed')
-      .then(r => r.json())
+    fetch(`https://api.github.com/users/${socials.github.split('/').pop()}?per_page=100&sort=pushed`)
+      .then(r => {
+        if (!r.ok) throw new Error(`GitHub API ${r.status}`)
+        return r.json()
+      })
       .then(data => {
         const counts = {}
         data.forEach(r => {
@@ -51,7 +56,7 @@ function GitHubFeed() {
   const maxCount = languages ? languages[0]?.count || 1 : 1
 
   return (
-    <section id="github-feed" style={{ position: 'relative' }}>
+    <section id="github-feed" className="section-relative">
       <div className="container">
         <div className="section-header">
           <span className="section-tag">
@@ -83,10 +88,7 @@ function GitHubFeed() {
               </div>
             ))}
             <p className="lang-subtitle">
-              {currentLang === 'es'
-                ? `Basado en ${totalRepos} repositorios públicos`
-                : `Based on ${totalRepos} public repositories`
-              }
+              {t('githubFeed.subtitle', { count: totalRepos })}
             </p>
           </div>
         ) : (
@@ -109,21 +111,19 @@ function GitHubFeed() {
 
         {languages && languages.length === 0 && (
           <p className="github-feed-error" style={{ textAlign: 'center', opacity: 0.5, padding: '2rem 0' }}>
-            {currentLang === 'es' ? 'No se pudieron cargar los datos de GitHub.' : 'Could not load GitHub data.'}
+            {t('githubFeed.error')}
           </p>
         )}
 
         <div className="gh-footer">
           <a
-            href="https://github.com/JmiguelRamriez"
+            href={socials.github}
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-outline"
           >
             {t('githubFeed.viewAll')}
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
+            <ArrowUpRightIcon size={14} />
           </a>
         </div>
       </div>

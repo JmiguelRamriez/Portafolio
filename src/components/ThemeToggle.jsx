@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
+import { useLanguage } from '../i18n/LanguageContext'
 
 export default function ThemeToggle() {
+  const { t } = useLanguage()
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark')
 
   useEffect(() => {
@@ -9,7 +11,7 @@ export default function ThemeToggle() {
   }, [theme])
 
   return (
-    <button className="nav-toggle" onClick={() => setTheme(t => t === 'dark' ? 'light' : 'dark')} data-cursor="link" aria-label="Toggle theme">
+    <button className="nav-toggle" onClick={() => setTheme(prev => prev === 'dark' ? 'light' : 'dark')} data-cursor="link" aria-label={t('themeToggle.ariaLabel')}>
       {theme === 'dark' ? (
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="5"/>

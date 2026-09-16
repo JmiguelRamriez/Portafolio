@@ -26,7 +26,7 @@ function ExperienceItem({ item, index }) {
         <div className="exp-header">
           {item.logo && (
             <div className="exp-logo">
-              <img src={img(item.logo)} alt={inst} />
+              <img src={img(item.logo)} alt={inst} loading="lazy" decoding="async" />
             </div>
           )}
           <div className="exp-header-text">
