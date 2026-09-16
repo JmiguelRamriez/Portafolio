@@ -25,7 +25,7 @@ function GitHubFeed() {
       } catch { sessionStorage.removeItem(CACHE_KEY) }
     }
 
-    fetch(`https://api.github.com/users/${socials.github.split('/').pop()}?per_page=100&sort=pushed`)
+    fetch(`https://api.github.com/users/${socials.github.split('/').pop()}/repos?per_page=100&sort=pushed`)
       .then(r => {
         if (!r.ok) throw new Error(`GitHub API ${r.status}`)
         return r.json()
